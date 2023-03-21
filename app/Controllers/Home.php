@@ -16,4 +16,8 @@ class Home extends BaseController
     {
         return view('user/index');
     }
+    public function admin()
+    {
+        return view('admin/index');
+    }
 }

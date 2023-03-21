@@ -20,20 +20,20 @@
 </li>
 
 <?php if (in_groups('Admin')) : ?>
-<!-- Divider -->
-<hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-    Data Management
-</div>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Data Management
+    </div>
 
-<!-- Nav Item - Employee List -->
-<li class="nav-item">
-    <a class="nav-link" href="profile.html">
-    <i class="fas fa-users"></i>
-        <span>Employee List</span></a>
-</li>
+    <!-- Nav Item - Employee List -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin'); ?>">
+        <i class="fas fa-users"></i>
+            <span>Employee List</span></a>
+    </li>`
 <?php endif; ?>
 
 <!-- Divider -->
@@ -111,7 +111,7 @@
 
 <!-- Nav Item - My profile -->
 <li class="nav-item">
-    <a class="nav-link" href="profile.html">
+    <a class="nav-link" href="<?= base_url('user'); ?>">
     <i class="fas fa-user-tie"></i>
         <span>My Profile</span></a>
 </li>
