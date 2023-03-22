@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
     <div class="sidebar-brand-icon">
         <i class="fas fa-business-time"></i>
     </div>
@@ -14,7 +14,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -25,15 +25,21 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Data Management
+        Administrator
     </div>
 
-    <!-- Nav Item - Employee List -->
+    <!-- Nav Item - User List -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin'); ?>">
+        <i class="fas fa-user-tag"></i>
+            <span>User List</span></a>
+    </li>
+    <!-- Nav Item - Employee List -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/employee'); ?>">
         <i class="fas fa-users"></i>
             <span>Employee List</span></a>
-    </li>`
+    </li>
 <?php endif; ?>
 
 <!-- Divider -->
@@ -41,58 +47,43 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Interface
+    ABSENSI
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
+<!-- Nav Item - absen hari ini -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-        aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-        </div>
-    </div>
+    <a class="nav-link" href="<?= base_url('absensi'); ?>">
+    <i class="fas fa-calendar-check"></i>
+        <span>Absensi</span></a>
 </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
+<!-- Nav Item - Rekap absen -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-        aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
-    </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-        data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-        </div>
-    </div>
+    <a class="nav-link" href="<?= base_url('absensi/rekap'); ?>">
+    <i class="fas fa-calendar-alt"></i>
+        <span>Rekap Absensi</span></a>
 </li>
 
+<?php if (in_groups('Admin')) : ?>
 <!-- Divider -->
 <hr class="sidebar-divider">
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Addons
+    SALARY
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
+<!-- <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('payroll'); ?>">
+    <i class="fas fa-user-tie"></i>
+        <span>My Profile</span></a>
+</li> -->
 <li class="nav-item active">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Pages</span>
+        <i class="fas fa-money-check-alt"></i>
+        <span>Payroll (TBA)</span>
     </a>
     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
         data-parent="#accordionSidebar">
@@ -108,6 +99,15 @@
         </div>
     </div>
 </li>
+<?php endif; ?>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    PROFILE
+</div>
 
 <!-- Nav Item - My profile -->
 <li class="nav-item">

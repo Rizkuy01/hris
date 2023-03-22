@@ -13,7 +13,7 @@ class Admin extends BaseController
 
     public function index()
     {
-        $data['title']  = 'Employee List';
+        $data['title']  = 'User List';
 
         // $users = new \Myth\Auth\Models\UserModel();
         // $data['users'] = $users->findall();
@@ -27,6 +27,23 @@ class Admin extends BaseController
         $data['users'] = $query->getResult();
 
         return view('admin/index', $data);
+    }
+    public function employee()
+    {
+        $data['title']  = 'Employee List';
+
+        // $users = new \Myth\Auth\Models\UserModel();
+        // $data['users'] = $users->findall();
+
+        
+        $this -> builder -> select('users.id as userid, username, email, name');
+        $this -> builder -> join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this -> builder -> join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $query = $this -> builder->get();
+
+        $data['users'] = $query->getResult();
+
+        return view('admin/employee', $data);
     }
 
     public function detail($id = 0)

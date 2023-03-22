@@ -10,7 +10,7 @@
             
             <!-- Button trigger modal -->
             <div class="mb-3">
-                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add User</a>
+                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add New Employee</a>
             </div>
 
             <table class="table">
@@ -49,7 +49,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New User</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee</h1>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?= base_url('admin/index'); ?>" method="post">
