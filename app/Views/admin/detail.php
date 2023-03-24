@@ -25,7 +25,7 @@
                                     </span>
                                 </li>
                                 <li class="list-group-item">
-                                    <small><a href="<?= base_url('admin') ?>">&laquo; back to employee list</a></small>
+                                    <small><a href="<?= base_url('admin/employee') ?>">&laquo; back to employee list</a></small>
                                 </li>
                             </ul>
                         </div>
