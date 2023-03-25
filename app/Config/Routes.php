@@ -41,7 +41,7 @@ $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:Admin']);
 $routes->get('/absensi', 'Absensi::index');
 $routes->get('/absensi/rekap', 'Absensi::rekap');
 
-$routes->get('/payroll', 'Payroll::index', ['filter' => 'role:Admin']);
+$routes->get('/templates/404', 'Payroll::index', ['filter' => 'role:Admin']);
 
 $routes->get('/user', 'User::index');
 

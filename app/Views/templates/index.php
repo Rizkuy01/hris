@@ -10,17 +10,18 @@
     <meta name="author" content="">
 
     <link rel="shortcut icon" href="https://ciptagrafika.com/wp-content/uploads/cg-logo-png.png" type="x-icon">
-    <title>Welcome</title>
+    <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mulish:ital@1&family=Raleway&family=Sofia+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital@1&family=Raleway&family=Sofia+Sans:wght@500&display=swap" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 
 </head>
 
@@ -39,9 +40,9 @@
             <!-- Main Content -->
             <div id="content">
 
-            <!-- topbar -->
-            <?= $this->include('templates/topbar'); ?>
-            <!-- end topbar -->
+                <!-- topbar -->
+                <?= $this->include('templates/topbar'); ?>
+                <!-- end topbar -->
                 <?= $this->renderSection('page-content'); ?>
             </div>
             <!-- End of Main Content -->
@@ -68,12 +69,11 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Want to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

@@ -7,7 +7,7 @@ class Payroll extends BaseController
     public function index()
     {
         $data['title'] = 'Payroll';
-        return view('payroll/index', $data);
+        return view('templates/404', $data);
     }
 
 }

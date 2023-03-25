@@ -7,7 +7,7 @@
     
     <div class="row">
         <div class="col-lg-8">
-            <div class="card mb-3" style="max-width: 640px;">
+            <div class="card mb-3 border-left-<?= ($user->name == 'Admin') ? 'success' : 'warning' ?>" style="max-width: 640px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="<?= base_url('/img/' . $user -> user_image); ?>" class="img-fluid rounded-start mt-4 ml-4" alt="<?= $user->fullname ?>">
@@ -25,7 +25,7 @@
                                     </span>
                                 </li>
                                 <li class="list-group-item">
-                                    <small><a href="<?= base_url('admin/employee') ?>">&laquo; back to employee list</a></small>
+                                    <small><a href="<?= base_url('admin/index') ?>">&laquo; back to user list</a></small>
                                 </li>
                             </ul>
                         </div>

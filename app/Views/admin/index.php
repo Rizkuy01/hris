@@ -32,8 +32,8 @@
                             <td><?= $user->email; ?></td>
                             <td><?= $user->name; ?></td>
                             <td>
-                                <!-- <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">details</a> -->
-                                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#detailModal">details</a>
+                                <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">details</a>
+                                <!-- <a href="#" class="btn btn-info" data-toggle="modal" data-target="#detailModal">details</a> -->
                             </td>
                     </tr>
                     <?php endforeach; ?>
