@@ -3,14 +3,14 @@
 <?= $this->section('page-content'); ?>
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">User Details</h1>
-    
+    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+
     <div class="row">
         <div class="col-lg-8">
             <div class="card mb-3 border-left-<?= ($user->name == 'Admin') ? 'success' : 'warning' ?>" style="max-width: 640px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="<?= base_url('/img/' . $user -> user_image); ?>" class="img-fluid rounded-start mt-4 ml-4" alt="<?= $user->fullname ?>">
+                        <img src="<?= base_url('/img/' . $user->user_image); ?>" class="img-fluid rounded-start mt-4 ml-4" alt="<?= $user->fullname ?>">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

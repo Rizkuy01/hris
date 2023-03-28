@@ -21,9 +21,9 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Username</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Position</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -32,12 +32,12 @@
                     <?php foreach ($users as $user) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
-                            <td><?= $user->username; ?></td>
-                            <td><?= $user->email; ?></td>
                             <td><?= $user->name; ?></td>
+                            <td><?= $user->email; ?></td>
+                            <td><?= $user->position; ?></td>
                             <td>
-                                <!-- <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">details</a> -->
-                                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#detailModal">details</a>
+                                <a href="<?= base_url('employee/' . $user->employeeid); ?>" class="btn btn-info">details</a>
+                                <!-- <a href="<?= base_url('admin/' . $user->employeeid); ?>" class="btn btn-info" data-toggle="modal" data-target="#detailModal">details</a> -->
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -49,7 +49,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Add Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -60,16 +60,31 @@
             <form action="<?= base_url('admin/index'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
+                        <input type="text" class="form-control" id="id" name="id" placeholder="Add id employee">
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control" id="name" name="fullname" placeholder="Add employee name">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Add email">
                     </div>
                     <div class="form-group">
+                        <input type="text" class="form-control" id="pob" name="pob" placeholder="Add birth place">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="dob" name="dob" placeholder="Add date of birth">
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control" id="phone" name="phone" placeholder="Add phone number">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="address" name="address" placeholder="Add address">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="gender" name="gender" placeholder="Add employee gender">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="religion" name="religion" placeholder="Add employee religion">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="degree" name="degree" placeholder="Add last degree">
@@ -100,14 +115,18 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="detailModalLabel"><?= $user->username  ?></h1>
+                <h1 class="modal-title fs-5" id="detailModalLabel"><?= $user->name  ?></h1>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="#" method="post">
                 <div class="modal-body">
+                    <label class="small">ID</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="id" name="id" placeholder="<?= $user->id_employee ?>" disabled>
+                    </div>
                     <label class="small">username</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="fullname" placeholder="<?= $user->username  ?>" disabled>
+                        <input type="text" class="form-control" id="name" name="fullname" placeholder="<?= $user->name  ?>" disabled>
                     </div>
                     <label class="small">email</label>
                     <div class="form-group">
@@ -115,19 +134,19 @@
                     </div>
                     <label class="small">phone number</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Add phone number">
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="<?= $user->no_tlp ?>" disabled>
                     </div>
                     <label class="small">address</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Add address">
+                        <textarea class="form-control" id="address" name="address" placeholder="<?= $user->address ?>" disabled></textarea>
                     </div>
                     <label class="small">degree</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="degree" name="degree" placeholder="Add last degree">
+                        <input type="text" class="form-control" id="degree" name="degree" placeholder="<?= $user->degree ?>" disabled>
                     </div>
                     <label class="small">position</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="position" name="position" placeholder="Add position">
+                        <input type="text" class="form-control" id="position" name="position" placeholder="<?= $user->position ?>" disabled>
                     </div>
                     <div class="form-group">
                         <div class="form-check">

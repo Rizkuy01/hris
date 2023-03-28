@@ -35,8 +35,9 @@ $routes->get('/dashboard', 'Dashboard::index');
 
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:Admin']);
-$routes->get('/admin/employee', 'Admin::employee', ['filter' => 'role:Admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:Admin']);
+$routes->get('/admin/employee', 'Employee::index', ['filter' => 'role:Admin']);
+$routes->get('/employee/(:num)', 'Employee::detail/$1', ['filter' => 'role:Admin']);
 
 $routes->get('/absensi', 'Absensi::index');
 $routes->get('/absensi/rekap', 'Absensi::rekap');
@@ -44,6 +45,8 @@ $routes->get('/absensi/rekap', 'Absensi::rekap');
 $routes->get('/templates/404', 'Payroll::index', ['filter' => 'role:Admin']);
 
 $routes->get('/user', 'User::index');
+
+$routes->add('/admin', 'Admin:index');
 
 
 
