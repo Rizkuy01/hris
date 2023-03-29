@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="dashboard">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,17 +28,21 @@
             Administrator
         </div>
 
-        <!-- Nav Item - User List -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin'); ?>">
-                <i class="fas fa-user-tag"></i>
-                <span>User List</span></a>
-        </li>
-        <!-- Nav Item - Employee List -->
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin/employee'); ?>">
-                <i class="fas fa-users"></i>
-                <span>Employee List</span></a>
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin">
+                <i class="fas fa-users-cog"></i>
+                <span>Admin</span>
+            </a>
+            <div id="collapseAdmin" class="collapse hide" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">User List</a>
+                    <a class="collapse-item" href="<?= base_url('admin/employee'); ?>">Employee List</a>
+                    <a class="collapse-item" href="<?= base_url('admin/role'); ?>">Role Access</a>
+                    <div class="collapse-divider"></div>
+                    <a class="collapse-item" href="<?= base_url('templates/404'); ?>">lorem ipsum</a>
+                    <a class="collapse-item" href="<?= base_url('templates/404'); ?>">Lorem ipsum</a>
+                </div>
+            </div>
         </li>
     <?php endif; ?>
 
@@ -79,12 +83,12 @@
     <i class="fas fa-user-tie"></i>
         <span>My Profile</span></a>
 </li> -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-money-check-alt"></i>
                 <span>Payroll (TBA)</span>
             </a>
-            <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse hide" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Lorem ipsum dolor sit:</h6>
                     <a class="collapse-item" href="<?= base_url('templates/404'); ?>">Lorem ipsum</a>

@@ -7,12 +7,19 @@
 
     <div class="row">
         <div class="col-lg-8">
+
+            <!-- Button trigger modal -->
+            <div class="mb-3">
+                <a href="<?= base_url('admin/employee'); ?>" type="button" class="btn btn-secondary">Go back</a>
+                <a href="#" type="button" class="btn btn-warning" data-toggle='modal' data-target='#editEmployeeModal'>Edit</a>
+            </div>
+
             <div class="card mb-3" style="max-width: 1200px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <li class="list-group-item">
                             <label class="small ml-4">ID</label>
-                            <span class="badge badge-<?= ($user->name == 'Admin') ? 'success' : 'warning' ?>">
+                            <span class="badge badge-<?= ($user->name == 'Admin') ? 'success' : 'primary' ?>">
                                 <?= $user->id_employee; ?>
                             </span>
                         </li>
@@ -63,6 +70,62 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- edit Modal -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editEmployeeModalLabel"><?= $user->name  ?></h1>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post">
+                <div class="modal-body">
+                    <label class="small">ID</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="id" name="id" placeholder="<?= $user->id_employee ?>">
+                    </div>
+                    <label class="small">username</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="fullname" placeholder="<?= $user->name  ?>">
+                    </div>
+                    <label class="small">email</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="<?= $user->email; ?>">
+                    </div>
+                    <label class="small">phone number</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="<?= $user->no_tlp ?>">
+                    </div>
+                    <label class="small">address</label>
+                    <div class="form-group">
+                        <textarea class="form-control" id="address" name="address" placeholder="<?= $user->address ?>"></textarea>
+                    </div>
+                    <label class="small">degree</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="degree" name="degree" placeholder="<?= $user->degree ?>">
+                    </div>
+                    <label class="small">position</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="position" name="position" placeholder="<?= $user->position ?>">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
+                            <label class="form-check-label" for="is_active">
+                                Account active
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

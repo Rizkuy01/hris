@@ -33,10 +33,13 @@ $routes->set404Override();
 $routes->get('/', 'Dashboard::index');
 $routes->get('/dashboard', 'Dashboard::index');
 
+$routes->add('/admin', 'Admin:index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:Admin']);
+$routes->get('/admin/role', 'Role::index', ['filter' => 'role:Admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:Admin']);
 $routes->get('/admin/employee', 'Employee::index', ['filter' => 'role:Admin']);
+
 $routes->get('/employee/(:num)', 'Employee::detail/$1', ['filter' => 'role:Admin']);
 
 $routes->get('/absensi', 'Absensi::index');
@@ -46,7 +49,6 @@ $routes->get('/templates/404', 'Payroll::index', ['filter' => 'role:Admin']);
 
 $routes->get('/user', 'User::index');
 
-$routes->add('/admin', 'Admin:index');
 
 
 
