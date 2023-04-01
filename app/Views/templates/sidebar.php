@@ -14,30 +14,43 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/dashboard">
+        <a class="nav-link pb-0" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
     <?php if (in_groups('Admin')) : ?>
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider mt-3">
 
-        <!-- Heading -->
+        <!-- Administrator Heading -->
         <div class="sidebar-heading">
             Administrator
         </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin">
+            <a class="nav-link pb-0" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin">
                 <i class="fas fa-users-cog"></i>
                 <span>Admin</span>
             </a>
-            <div id="collapseAdmin" class="collapse hide" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
+            <div id="collapseAdmin" class="collapse show mt-3" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= base_url('admin'); ?>">User List</a>
-                    <a class="collapse-item" href="<?= base_url('admin/employee'); ?>">Employee List</a>
-                    <a class="collapse-item" href="<?= base_url('admin/role'); ?>">Role Access</a>
+
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">
+                        <i class="fas fa-user-check"></i>
+                        <span class="ml-2">User List</span>
+                    </a>
+
+                    <a class="collapse-item" href="<?= base_url('admin/employee'); ?>">
+                        <i class="fas fa-user"></i>
+                        <span class="ml-2">Employee List</span>
+                    </a>
+
+                    <a class="collapse-item" href="<?= base_url('admin/role'); ?>">
+                        <i class="fas fa-user-secret"></i>
+                        <span class="ml-2">Role Access</span>
+                    </a>
+
                     <div class="collapse-divider"></div>
                     <a class="collapse-item" href="<?= base_url('templates/404'); ?>">lorem ipsum</a>
                     <a class="collapse-item" href="<?= base_url('templates/404'); ?>">Lorem ipsum</a>
@@ -47,42 +60,36 @@
     <?php endif; ?>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mt-3">
 
-    <!-- Heading -->
+    <!-- Attendance Heading -->
     <div class="sidebar-heading">
         ABSENSI
     </div>
 
     <!-- Nav Item - absen hari ini -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('absensi'); ?>">
+        <a class="nav-link pb-0" href="<?= base_url('absensi'); ?>">
             <i class="fas fa-calendar-check"></i>
             <span>Absensi</span></a>
     </li>
 
     <!-- Nav Item - Rekap absen -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('absensi/rekap'); ?>">
+        <a class="nav-link pb-0" href="<?= base_url('absensi/rekap'); ?>">
             <i class="fas fa-calendar-alt"></i>
             <span>Rekap Absensi</span></a>
     </li>
 
     <?php if (in_groups('Admin')) : ?>
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider mt-3">
 
-        <!-- Heading -->
+        <!-- Payroll Heading -->
         <div class="sidebar-heading">
             Payroll
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
-        <!-- <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('payroll'); ?>">
-    <i class="fas fa-user-tie"></i>
-        <span>My Profile</span></a>
-</li> -->
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-money-check-alt"></i>
@@ -104,39 +111,39 @@
     <?php endif; ?>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mt-3">
 
-    <!-- Heading -->
+    <!-- Profile Heading -->
     <div class="sidebar-heading">
         PROFILE
     </div>
 
     <!-- Nav Item - My profile -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user'); ?>">
+        <a class="nav-link pb-0" href="<?= base_url('user'); ?>">
             <i class="fas fa-user-tie"></i>
             <span>My Profile</span></a>
     </li>
 
     <!-- Nav Item - Edit profile -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('templates/404') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('templates/404') ?>">
             <i class="fas fa-user-edit"></i>
             <span>Edit Profile</span></a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mt-3">
 
     <!-- Nav Item - Logout -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('logout'); ?>">
+        <a class="nav-link pb-0" href="<?= base_url('logout'); ?>">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider d-none d-md-block mt-3">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
