@@ -21,13 +21,13 @@
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($role as $r) : ?>
+                    <?php foreach ($permission as $p) : ?>
                         <tr>
-                            <td><?= $r->description; ?></td>
+                            <td><?= $p->description; ?></td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="access" checked>
-                                    <label class="custom-control-label" for="access">Access</label>
+                                    <input type="checkbox" class="custom-control-input" id="access<?= $p->id; ?>" <?= check_access($group_id, $p->id); ?> data-group="<?= $group_id; ?>" data-permission="<?= $p->id; ?>">
+                                    <label class="custom-control-label" for="access<?= $p->id; ?>"></label>
                                 </div>
                             </td>
                         </tr>
@@ -46,5 +46,26 @@
 
 <script>
     $('#table-access').DataTable();
+</script>
+
+<script>
+    $('.custom-control-input').on('click', function() {
+        const groupId = $(this).data('group');
+        const permissionId = $(this).data('permission');
+
+        console.log(groupId, permissionId);
+        $.ajax({
+            url: "<?= base_url('change-access'); ?>",
+            type: 'post',
+            data: {
+                groupId: groupId,
+                permissionId: permissionId
+            },
+            success: function(data) {
+                // document.location.href = "<?= base_url('admin/access/'); ?>" + permissionId;
+                console.log(data)
+            }
+        });
+    });
 </script>
 <?= $this->endSection(); ?>

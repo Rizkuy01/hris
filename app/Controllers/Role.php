@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+$request = \Config\Services::request();
+
 class Role extends BaseController
 {
     protected $db, $builder;
@@ -32,15 +34,37 @@ class Role extends BaseController
         $data['title'] = 'Access Menu';
 
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('auth_groups_permissions');
+        $this->builder = $this->db->table('auth_permissions');
 
-        $this->builder->select('group_id, permission_id, auth_permissions.description');
-        $this->builder->join('auth_permissions', 'auth_permissions.id = auth_groups_permissions.permission_id');
-        $this->builder->where('group_id', $id);
+        $this->builder->select('description, id');
         $query = $this->builder->get();
 
-        $data['role'] = $query->getResult();
+        $data['permission'] = $query->getResult();
+        $data['group_id'] = $id;
 
         return view('admin/access', $data);
+    }
+
+    public function changeaccess()
+    {
+        $group_id       = $this->request->getpost('groupId');
+        $permission_id  = $this->request->getpost('permissionId');
+
+        $data = [
+            'group_id'      => $group_id,
+            'permission_id' => $permission_id
+        ];
+
+        $this->builder->select('*');
+        $this->builder->where($data);
+        $query = $this->builder->get();
+
+        if ($query->getNumRows() < 1) {
+            $this->builder->insert($data);
+        } else {
+            $this->builder->delete($data);
+        }
+
+        echo json_encode($query->getNumRows());
     }
 }

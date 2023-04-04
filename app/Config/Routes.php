@@ -38,6 +38,7 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:Admin']);
 $routes->get('/admin/role', 'Role::index', ['filter' => 'role:Admin']);
 $routes->get('/admin/access/(:num)', 'Role::access/$1', ['filter' => 'role:Admin']);
+$routes->post('change-access', 'Role::changeaccess', ['filter' => 'role:Admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:Admin']);
 $routes->get('/admin/employee', 'Employee::index', ['filter' => 'role:Admin']);
 
