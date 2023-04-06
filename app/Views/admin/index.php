@@ -13,7 +13,7 @@
 
             <!-- Button trigger modal -->
             <div class="mb-3">
-                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add User</a>
+                <a href="/admin/add_user" type="button" class="btn btn-primary">Add User</a>
             </div>
 
             <table class="table table-striped dt-responsive nowrap" id="table-user" width="100%" cellspacing="0">

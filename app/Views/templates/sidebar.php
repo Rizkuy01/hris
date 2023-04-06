@@ -19,7 +19,7 @@
             <span>Dashboard</span></a>
     </li>
 
-    <?php if (in_groups(['Admin', 'User'])) : ?>
+    <?php if (in_groups(['Admin'])) : ?>
         <!-- Divider -->
         <hr class="sidebar-divider mt-3">
 
@@ -36,13 +36,10 @@
             <div id="collapseAdmin" class="collapse show mt-3" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <?= check_role_menu(8); ?>
-                    <?php if (in_groups(check_role_menu(8))) : ?>
-                        <a class="collapse-item" href="<?= base_url('admin'); ?>">
-                            <i class="fas fa-user-check"></i>
-                            <span class="ml-2">User List</span>
-                        </a>
-                    <?php endif ?>
+                    <a class="collapse-item" href="<?= base_url('admin'); ?>">
+                        <i class="fas fa-user-check"></i>
+                        <span class="ml-2">User List</span>
+                    </a>
 
                     <a class="collapse-item" href="<?= base_url('admin/employee'); ?>">
                         <i class="fas fa-user"></i>

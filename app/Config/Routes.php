@@ -41,6 +41,9 @@ $routes->get('/admin/access/(:num)', 'Role::access/$1', ['filter' => 'role:Admin
 $routes->post('change-access', 'Role::changeaccess', ['filter' => 'role:Admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:Admin']);
 $routes->get('/admin/employee', 'Employee::index', ['filter' => 'role:Admin']);
+$routes->get('/admin/add_user', 'User::add_user', ['filter' => 'role:Admin']);
+$routes->post('/admin/index', 'User::add_user', ['filter' => 'role:Admin']);
+$routes->post('/admin/index', 'User::save', ['filter' => 'role:Admin']);
 
 $routes->get('/employee/(:num)', 'Employee::detail/$1', ['filter' => 'role:Admin']);
 
