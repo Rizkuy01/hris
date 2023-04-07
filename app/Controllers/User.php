@@ -23,21 +23,35 @@ class User extends BaseController
 
     public function add_user()
     {
-        $user = $this->userModel->findAll();
         $data = [
             'title' => 'Add User',
-            'user' => $user
         ];
 
-        return view('admin/add_user', $data);
-    }
+        helper('form');
 
-    public function save()
-    {
-        $this->userModel->save([
-            'username' => $this->userModel->getVar('username'),
-            'email' => $this->userModel->getVar('email'),
-            'role' => $this->userModel->getVar('name')
-        ]);
+        if (!$this->request->is('post')) {
+            return view('admin/add_user', $data);
+        }
+
+        $post = $this->request->getPost(['fullname', 'username', 'email']);
+
+        if (!$this->validateData($post, [
+            'fullname'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'username'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'email'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back();
+        }
+
+        $dataUser = [
+            'fullname' => $post['fullname'],
+            'username' => $post['username'],
+            'email' => $post['email'],
+        ];
+        $this->userModel->insert_user($dataUser);
+
+        $data['title']  = 'User List';
+        return view('admin/add_user', $data);
     }
 }

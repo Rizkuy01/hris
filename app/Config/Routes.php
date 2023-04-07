@@ -27,6 +27,7 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
+use App\Controllers\User;
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'User::index');
@@ -53,6 +54,8 @@ $routes->get('/absensi/rekap', 'Absensi::rekap');
 $routes->get('/templates/404', 'Payroll::index', ['filter' => 'role:Admin']);
 
 $routes->get('/user', 'User::index');
+$routes->get('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
+$routes->post('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
 
 
 

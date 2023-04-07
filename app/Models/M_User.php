@@ -8,7 +8,7 @@ class M_User extends Model
 {
     protected $table = 'users';
     protected $useTimestamps = true;
-
+    protected $allowedFields = ['username', 'email', 'role'];
 
     public function list()
     {
@@ -21,5 +21,27 @@ class M_User extends Model
         $query = $this->builder->get();
 
         return $query->getResult();
+    }
+
+    public function insert_user($dataUser)
+    {
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('users')->insert($dataUser);
+
+        $idUser = $this->db->insertID();
+
+        $this->insert_role($idUser);
+    }
+    public function insert_role($idUser)
+    {
+        $this->db = \Config\Database::connect();
+        $data = [
+            'group_id' => 2,
+            'user_id' => $idUser
+        ];
+        $this->builder = $this->db->table('auth_groups_users')->insert($data);
+
+        $insert = $this->builder;
+        return $insert;
     }
 }

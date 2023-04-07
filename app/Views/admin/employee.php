@@ -57,7 +57,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee</h1>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('admin/index'); ?>" method="post">
+            <form action="<?= base_url('admin/employee'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="id" name="id" placeholder="Add id employee">
@@ -72,7 +72,7 @@
                         <input type="text" class="form-control" id="pob" name="pob" placeholder="Add birth place">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="dob" name="dob" placeholder="Add date of birth">
+                        <input type="date" class="form-control" id="dob" name="dob" placeholder="Add date of birth">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="phone" name="phone" placeholder="Add phone number">
