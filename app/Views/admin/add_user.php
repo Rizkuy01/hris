@@ -18,15 +18,18 @@
     <?php endif; ?>
 
     <!-- //success validation -->
-    <?php if (!empty(session()->getFlashdata('success'))) : ?>
-        <div class="alert alert-success alert-dismissible fade show col-lg-4" role="alert">
-            <h4>Data Submited!</h4>
-            </hr />
+    <?php
+    if (session()->getFlashData('success')) {
+    ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashData('success') ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    <?php endif; ?>
+    <?php
+    }
+    ?>
 
     <div class="content col-lg-4">
         <form action="<?= base_url('user/add_user'); ?>" method="post" id="add_form">
@@ -43,15 +46,9 @@
             </div>
             <div class="footer">
                 <a href="<?= base_url('admin/index'); ?>" type="button" class="btn btn-secondary">Go back</a>
-                <button type="submit" class="btn btn-primary" onclick="resetForm()">Add</button>
+                <button type="submit" class="btn btn-primary">Add</button>
             </div>
         </form>
     </div>
 </div>
-
-<script>
-    function resetForm() {
-        document.getElementById("add_form").reset();
-    }
-</script>
 <?= $this->endSection(); ?>

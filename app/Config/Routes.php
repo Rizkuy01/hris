@@ -56,6 +56,10 @@ $routes->get('/templates/404', 'Payroll::index', ['filter' => 'role:Admin']);
 $routes->get('/user', 'User::index');
 $routes->get('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
 $routes->post('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
+$routes->get('User/delete/(:num)', 'User::delete/$1', ['filter' => 'role:Admin']);
+
+$routes->get('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
+$routes->post('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
 
 
 

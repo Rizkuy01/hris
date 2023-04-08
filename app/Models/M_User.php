@@ -44,4 +44,11 @@ class M_User extends Model
         $insert = $this->builder;
         return $insert;
     }
+
+    public function deleteUser($id)
+    {
+        $query = "DELETE FROM users WHERE id = $id";
+        $this->db->query($query);
+        redirect('admin/index');
+    }
 }

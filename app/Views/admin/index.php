@@ -36,7 +36,7 @@
                             <td><?= $user->name; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">details</a>
-                                <!-- <a href="#" class="btn btn-info" data-toggle="modal" data-target="#detailModal">details</a> -->
+                                <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#deleteUserModal'>Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -126,6 +126,28 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_menu" name="id_menu">
+                Do you want to deleted this user?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="<?= base_url('User/delete/' . $user->userid) ?>" role=" button">Delete</a>
+            </div>
         </div>
     </div>
 </div>

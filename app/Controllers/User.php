@@ -12,7 +12,7 @@ class User extends BaseController
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('users');
-        $this->userModel = new M_User();
+        $this->userModel = new \App\Models\M_User();
     }
     public function index()
     {
@@ -26,6 +26,7 @@ class User extends BaseController
         $data = [
             'title' => 'Add User',
         ];
+        // $data['title']  = 'User List';
 
         helper('form');
 
@@ -41,17 +42,23 @@ class User extends BaseController
             'email'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
-            return redirect()->back();
+            // session()->setFlashdata('success', 'Post Berhasil Disimpan');
         }
 
         $dataUser = [
-            'fullname' => $post['fullname'],
-            'username' => $post['username'],
-            'email' => $post['email'],
+            'fullname'  => $post['fullname'],
+            'username'  => $post['username'],
+            'email'     => $post['email'],
         ];
         $this->userModel->insert_user($dataUser);
+        return redirect('admin/index')->with('success', 'Data Added Successfully');
 
-        $data['title']  = 'User List';
-        return view('admin/add_user', $data);
+        // return view('admin/add_user', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->userModel->deleteUser($id);
+        return redirect('admin/index');
     }
 }
