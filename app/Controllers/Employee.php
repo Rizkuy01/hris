@@ -56,12 +56,12 @@ class Employee extends BaseController
         $post = $this->request->getPost(['id_employee', 'name', 'email', 'birth_place', 'birth_date', 'no_tlp', 'address', 'gender', 'religion', 'degree', 'position']);
 
         if (!$this->validateData($post, [
-            'id employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'name'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'email'         => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'birth place'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'birth date'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'phone number'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'birth_place'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'birth_date'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'no_tlp'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'address'       => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'gender'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'religion'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
@@ -86,5 +86,11 @@ class Employee extends BaseController
         ];
         $this->employeeModel->insert_employee($dataEmployee);
         return redirect('admin/employee')->with('success', 'Data Added Successfully');
+    }
+
+    public function delete($id)
+    {
+        $this->employeeModel->deleteEmployee($id);
+        return redirect('admin/employee');
     }
 }

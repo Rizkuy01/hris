@@ -32,7 +32,7 @@
     ?>
 
     <div class="content col-lg-4">
-        <form action="<?= base_url('user/add_user'); ?>" method="post" id="add_form">
+        <form action="<?= base_url('user/add_user'); ?>" method="post" id="add_userform">
             <div class="body">
                 <div class="form-group">
                     <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Add Fullname" value="<?= set_value('fullname') ?>" autocomplete="off">

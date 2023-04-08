@@ -35,8 +35,8 @@
                             <td><?= $user->email; ?></td>
                             <td><?= $user->name; ?></td>
                             <td>
-                                <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">details</a>
-                                <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#deleteUserModal'>Delete</a>
+                                <a href="<?= base_url('admin/' . $user->userid); ?>" class="badge badge-info">details</a>
+                                <a href="<?= base_url('User/delete/' . $user->userid) ?>" class="badge badge-danger" onclick="return confirm('Are you sure ?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

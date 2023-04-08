@@ -26,4 +26,11 @@ class M_Employee extends Model
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('employee')->insert($dataEmployee);
     }
+
+    public function deleteEmployee($id)
+    {
+        $query = "DELETE FROM employee WHERE id = $id";
+        $this->db->query($query);
+        redirect('admin/employee');
+    }
 }

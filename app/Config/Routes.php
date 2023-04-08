@@ -59,7 +59,8 @@ $routes->post('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
 $routes->get('User/delete/(:num)', 'User::delete/$1', ['filter' => 'role:Admin']);
 
 $routes->get('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
-$routes->post('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
+$routes->post('/employee/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
+$routes->get('Employee/delete/(:num)', 'Employee::delete/$1', ['filter' => 'role:Admin']);
 
 
 
