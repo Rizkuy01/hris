@@ -8,14 +8,14 @@ class M_Employee extends Model
 {
     protected $table = 'employee';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_employee', 'name', 'email', 'birth_place', 'birth_date', 'no_tlp', 'address', 'gender', 'religion', 'degree', 'position'];
+    protected $allowedFields = ['id_employee', 'name', 'email', 'birth_place', 'birth_date', 'no_tlp', 'address', 'gender', 'religion', 'degree', 'divisi', 'position'];
 
     public function list()
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('employee');
 
-        $this->builder->select('employee.id as employeeid, id_employee, img, email, name, position, degree, address, no_tlp, birth_date, birth_place, gender, religion');
+        $this->builder->select('employee.id as employeeid, id_employee, img, email, name, position, degree, address, no_tlp, birth_date, birth_place, gender, divisi, religion');
         $query = $this->builder->get();
 
         return $query->getResult();
@@ -33,4 +33,10 @@ class M_Employee extends Model
         $this->db->query($query);
         redirect('admin/employee');
     }
+
+    // public function editEmployee($id){
+    //     $data = [
+    //         'id_employee' => $this->request->post('id_employee'),
+    //     ];
+    // }
 }

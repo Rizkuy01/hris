@@ -12,6 +12,13 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    <!-- QUERY MENU -->
+    <?php
+    $queryMenu = "SELECT*
+                    FROM `menu`"
+
+    ?>
+
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link pb-0" href="/dashboard">
@@ -52,7 +59,10 @@
                     </a>
 
                     <div class="collapse-divider"></div>
-                    <a class="collapse-item" href="<?= base_url('templates/404'); ?>">lorem ipsum</a>
+                    <a class="collapse-item" href="<?= base_url('menu/menu'); ?>">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span class="ml-2">Menu Management</span>
+                    </a>
                     <a class="collapse-item" href="<?= base_url('templates/404'); ?>">Lorem ipsum</a>
                 </div>
             </div>
@@ -131,6 +141,30 @@
             <i class="fas fa-user-edit"></i>
             <span>Edit Profile</span></a>
     </li>
+
+    <?php if (in_groups(['Admin'])) : ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
+
+        <!-- Data Master -->
+        <div class="sidebar-heading">
+            DATA MASTER
+        </div>
+
+        <!-- Nav Item - Divisi -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="<?= base_url('data_master/divisi'); ?>">
+                <i class="fas fa-street-view"></i>
+                <span>Divisi</span></a>
+        </li>
+
+        <!-- Nav Item - Position -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="<?= base_url('templates/404') ?>">
+                <i class="fas fa-id-card-alt"></i>
+                <span>Position</span></a>
+        </li>
+    <?php endif; ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">

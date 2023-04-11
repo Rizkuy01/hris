@@ -8,7 +8,7 @@ class M_User extends Model
 {
     protected $table = 'users';
     protected $useTimestamps = true;
-    protected $allowedFields = ['username', 'email', 'role'];
+    protected $allowedFields = ['username', 'email', 'role', 'password_hash'];
 
     public function list()
     {

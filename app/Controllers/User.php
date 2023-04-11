@@ -12,7 +12,7 @@ class User extends BaseController
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('users');
-        $this->userModel = new \App\Models\M_User();
+        $this->userModel = new M_User();
     }
     public function index()
     {
@@ -37,18 +37,21 @@ class User extends BaseController
         $post = $this->request->getPost(['fullname', 'username', 'email']);
 
         if (!$this->validateData($post, [
-            'fullname'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'username'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'email'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'fullname'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'username'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'email'             => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'password'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
             // session()->setFlashdata('success', 'Post Berhasil Disimpan');
         }
 
         $dataUser = [
-            'fullname'  => $post['fullname'],
-            'username'  => $post['username'],
-            'email'     => $post['email'],
+            'fullname'          => $post['fullname'],
+            'username'          => $post['username'],
+            'email'             => $post['email'],
+            'password_hash'     => $post['password_hash'],
         ];
         $this->userModel->insert_user($dataUser);
         return redirect('admin/index')->with('success', 'Data Added Successfully');

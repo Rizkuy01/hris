@@ -46,6 +46,13 @@ $routes->get('/admin/add_user', 'User::add_user', ['filter' => 'role:Admin']);
 $routes->post('/admin/index', 'User::add_user', ['filter' => 'role:Admin']);
 $routes->post('/admin/index', 'User::save', ['filter' => 'role:Admin']);
 
+$routes->get('/menu/menu', 'Menu::index', ['filter' => 'role:Admin']);
+$routes->get('/menu/addmenu', 'Menu::add_menu', ['filter' => 'role:Admin']);
+$routes->post('/menu/addmenu', 'Menu::add_menu', ['filter' => 'role:Admin']);
+$routes->get('Menu/delete/(:num)', 'Menu::delete/$1', ['filter' => 'role:Admin']);
+
+
+
 $routes->get('/employee/(:num)', 'Employee::detail/$1', ['filter' => 'role:Admin']);
 
 $routes->get('/absensi', 'Absensi::index');
@@ -61,6 +68,8 @@ $routes->get('User/delete/(:num)', 'User::delete/$1', ['filter' => 'role:Admin']
 $routes->get('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
 $routes->post('/employee/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
 $routes->get('Employee/delete/(:num)', 'Employee::delete/$1', ['filter' => 'role:Admin']);
+
+$routes->get('/data_master/divisi', 'Datamaster::divisi', ['filter' => 'role:Admin']);
 
 
 

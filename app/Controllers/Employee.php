@@ -5,22 +5,22 @@ namespace App\Controllers;
 class Employee extends BaseController
 {
 
-    protected $db, $builder, $employeeModel;
+    protected $db, $builder, $employeeModel, $divisiModel;
     public function __construct()
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('employee');
         $this->employeeModel = new \App\Models\M_Employee();
+        $this->divisiModel = new \App\Models\M_Divisi();
     }
     public function index()
     {
         $data['title']  = 'Employee List';
 
 
-        $this->builder->select('employee.id as employeeid, id_employee, img, email, name, position, degree, address, no_tlp, birth_date, birth_place, gender, religion');
-        $query = $this->builder->get();
+        $employee = $this->employeeModel->list();
 
-        $data['users'] = $query->getResult();
+        $data['users'] = $employee;
 
         return view('admin/employee', $data);
     }
@@ -29,7 +29,7 @@ class Employee extends BaseController
     {
         $data['title']  = 'Employee Details';
 
-        $this->builder->select('employee.id as employeeid, id_employee, img, email, name, position, degree, address, no_tlp, birth_date, birth_place, gender, religion');
+        $this->builder->select('employee.id as employeeid, id_employee, img, email, name, position, degree, address, no_tlp, birth_date, birth_place, gender, religion, divisi');
         $this->builder->where('employee.id', $id);
         $query = $this->builder->get();
 
@@ -46,6 +46,8 @@ class Employee extends BaseController
         $data = [
             'title' => 'Add Employee',
         ];
+        $divisi = $this->divisiModel->list();
+        $data['divisi'] = $divisi;
 
         helper('form');
 
@@ -53,7 +55,7 @@ class Employee extends BaseController
             return view('admin/add_employee', $data);
         }
 
-        $post = $this->request->getPost(['id_employee', 'name', 'email', 'birth_place', 'birth_date', 'no_tlp', 'address', 'gender', 'religion', 'degree', 'position']);
+        $post = $this->request->getPost(['id_employee', 'name', 'email', 'birth_place', 'birth_date', 'no_tlp', 'address', 'gender', 'religion', 'degree', 'divisi', 'position']);
 
         if (!$this->validateData($post, [
             'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
@@ -66,9 +68,11 @@ class Employee extends BaseController
             'gender'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'religion'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'degree'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'divisi'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'position'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
         }
 
         $dataEmployee = [
@@ -82,6 +86,7 @@ class Employee extends BaseController
             'gender'        => $post['gender'],
             'religion'      => $post['religion'],
             'degree'        => $post['degree'],
+            'divisi'        => $post['degree'],
             'position'      => $post['position'],
         ];
         $this->employeeModel->insert_employee($dataEmployee);
@@ -91,6 +96,12 @@ class Employee extends BaseController
     public function delete($id)
     {
         $this->employeeModel->deleteEmployee($id);
+        return redirect('admin/employee');
+    }
+
+    public function edit_employee($id)
+    {
+        $this->employeeModel->editEmployee($id);
         return redirect('admin/employee');
     }
 }

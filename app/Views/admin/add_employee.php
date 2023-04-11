@@ -46,7 +46,7 @@
                     <input type="text" class="form-control" id="address" name="address" placeholder="Add address" value="<?= set_value('address') ?>" autocomplite="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Add your gender" value="<?= set_value('gender') ?>" autocomplite="off">
+                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Add gender" value="<?= set_value('gender') ?>" autocomplite="off">
                 </div>
                 <!-- <div class="form-group">
                     <select name="gender" id="gender" class="form-control">
@@ -60,6 +60,17 @@
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="degree" name="degree" placeholder="Add last degree" value="<?= set_value('degree') ?>" autocomplite="off">
+                </div>
+                <!-- <div class="form-group">
+                    <input type="text" class="form-control" id="divisi" name="divisi" placeholder="Add divisi" value="<?= set_value('divisi') ?>" autocomplite="off">
+                </div> -->
+                <div class="form-group">
+                    <select name="divisi" id="divisi" class="form-control" value="<?= set_value('divisi') ?>">
+                        <option value="">Divisi</option>
+                        <?php foreach ($divisi as $div) : ?>
+                            <option value=" <?= $div->id; ?>"><?= $div->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="position" name="position" placeholder="Add position" value="<?= set_value('position') ?>" autocomplite="off">

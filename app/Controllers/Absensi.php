@@ -6,7 +6,7 @@ class Absensi extends BaseController
 {
     public function index()
     {
-        $data['title'] = date('l, d F Y');
+        $data['title'] = "Form Absensi";
         return view('absensi/index', $data);
     }
     public function rekap()
@@ -14,5 +14,4 @@ class Absensi extends BaseController
         $data['title'] = 'Rekap Absensi Bulanan';
         return view('absensi/rekap', $data);
     }
-
 }

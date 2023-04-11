@@ -59,6 +59,10 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" id="degree" name="degree" placeholder="<?= $user->degree ?>" disabled>
                             </div>
+                            <label class="small">divisi</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="divisi" name="divisi" placeholder="<?= $user->divisi ?>" disabled>
+                            </div>
                             <label class="small">position</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="position" name="position" placeholder="<?= $user->position ?>" disabled>

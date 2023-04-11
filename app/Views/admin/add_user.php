@@ -43,6 +43,14 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Add email" value="<?= set_value('email') ?>" autocomplete="off">
                 </div>
+                <div class=" form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+                    </div>
+                </div>
             </div>
             <div class="footer">
                 <a href="<?= base_url('admin/index'); ?>" type="button" class="btn btn-secondary">Go back</a>
