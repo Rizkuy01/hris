@@ -86,7 +86,7 @@ class Employee extends BaseController
             'gender'        => $post['gender'],
             'religion'      => $post['religion'],
             'degree'        => $post['degree'],
-            'divisi'        => $post['degree'],
+            'divisi'        => $post['divisi'],
             'position'      => $post['position'],
         ];
         $this->employeeModel->insert_employee($dataEmployee);
@@ -101,7 +101,60 @@ class Employee extends BaseController
 
     public function edit_employee($id)
     {
+        $data = array(
+            'post' => $this->employeeModel->getEmployee($id),
+            'divisi' => $this->divisiModel->list(),
+            'title' => 'Edit Employee'
+        );
         $this->employeeModel->editEmployee($id);
-        return redirect('admin/employee');
+        return view('admin/edit_employee', $data);
+    }
+
+    public function update($id)
+    {
+        helper(['form', 'url']);
+
+        $validation = $this->validate([
+            'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'name'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'email'         => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'birth_place'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'birth_date'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'no_tlp'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'address'       => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'gender'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'religion'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'degree'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'divisi'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'position'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+        ]);
+
+        if (!$validation) {
+            return view('admin/edit_employee', [
+                'post' => $this->employeeModel->find($id),
+                'validation' => $this->validator,
+                'divisi' => $this->divisiModel->list(),
+                'title' => 'Edit Employee'
+            ]);
+        } else {
+            $this->employeeModel->update($id, [
+                'id_employee'   => $this->request->getPost(['id_employee']),
+                'name'          => $this->request->getPost(['name']),
+                'email'         => $this->request->getPost(['email']),
+                'birth_place'   => $this->request->getPost(['birth_place']),
+                'birth_date'    => $this->request->getPost(['birth_date']),
+                'no_tlp'        => $this->request->getPost(['no_tlp']),
+                'address'       => $this->request->getPost(['address']),
+                'gender'        => $this->request->getPost(['gender']),
+                'religion'      => $this->request->getPost(['religion']),
+                'degree'        => $this->request->getPost(['degree']),
+                'divisi'        => $this->request->getPost(['divisi']),
+                'position'      => $this->request->getPost(['position']),
+                'updated_at'    => $this->request->getPost(['updated_at']),
+            ]);
+            $this->builder->where('id', $this->request->getPost('id'));
+            $this->builder->update(['employee']);
+            return redirect()->to(base_url('admin/detail_employee'));
+        }
     }
 }

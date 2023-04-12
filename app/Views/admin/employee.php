@@ -37,7 +37,6 @@
                             <td><?= $user->position; ?></td>
                             <td>
                                 <a href="<?= base_url('employee/' . $user->employeeid); ?>" class="badge badge-info">details</a>
-                                <a href="#" class="badge badge-warning" data-toggle='modal' data-target='#editEmployeeModal'>Edit</a>
                                 <a href="<?= base_url('Employee/delete/' . $user->employeeid) ?>" class="badge badge-danger" onclick="return confirm('Are you sure ?')">Delete</a>
                             </td>
                         </tr>

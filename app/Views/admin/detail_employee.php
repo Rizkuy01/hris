@@ -11,7 +11,7 @@
             <!-- Button trigger modal -->
             <div class="mb-3">
                 <a href="<?= base_url('admin/employee'); ?>" type="button" class="btn btn-secondary">Go back</a>
-                <a href="#" type="button" class="btn btn-warning" data-toggle='modal' data-target='#editEmployeeModal'>Edit</a>
+                <a href="<?= base_url('admin/edit_employee/' . $user->employeeid); ?>" type="button" class="btn btn-warning">Edit</a>
             </div>
 
             <div class="card mb-3" style="max-width: 1200px;">

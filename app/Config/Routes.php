@@ -68,6 +68,8 @@ $routes->get('User/delete/(:num)', 'User::delete/$1', ['filter' => 'role:Admin']
 $routes->get('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
 $routes->post('/employee/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
 $routes->get('Employee/delete/(:num)', 'Employee::delete/$1', ['filter' => 'role:Admin']);
+$routes->get('admin/edit_employee/(:num)', 'Employee::update/$1', ['filter' => 'role:Admin']);
+$routes->post('admin/edit_employee/(:num)', 'Employee::update/$1', ['filter' => 'role:Admin']);
 
 $routes->get('/data_master/divisi', 'Datamaster::divisi', ['filter' => 'role:Admin']);
 
