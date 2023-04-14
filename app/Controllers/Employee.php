@@ -29,7 +29,22 @@ class Employee extends BaseController
     {
         $data['title']  = 'Employee Details';
 
-        $this->builder->select('employee.id as employeeid, id_employee, img, email, name, position, degree, address, no_tlp, birth_date, birth_place, gender, religion, divisi');
+        $this->builder->select('
+        employee.id as employeeid, 
+        id_employee, 
+        img, 
+        email, 
+        name, 
+        position, 
+        degree, 
+        address, 
+        no_tlp, 
+        birth_date, 
+        birth_place, 
+        gender, 
+        religion, 
+        divisi
+        ');
         $this->builder->where('employee.id', $id);
         $query = $this->builder->get();
 
@@ -55,7 +70,20 @@ class Employee extends BaseController
             return view('admin/add_employee', $data);
         }
 
-        $post = $this->request->getPost(['id_employee', 'name', 'email', 'birth_place', 'birth_date', 'no_tlp', 'address', 'gender', 'religion', 'degree', 'divisi', 'position']);
+        $post = $this->request->getPost([
+            'id_employee',
+            'name',
+            'email',
+            'birth_place',
+            'birth_date',
+            'no_tlp',
+            'address',
+            'gender',
+            'religion',
+            'degree',
+            'divisi',
+            'position'
+        ]);
 
         if (!$this->validateData($post, [
             'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
@@ -102,10 +130,11 @@ class Employee extends BaseController
     public function edit_employee($id)
     {
         $data = array(
-            'post' => $this->employeeModel->getEmployee($id),
-            'divisi' => $this->divisiModel->list(),
-            'title' => 'Edit Employee'
+            'post'      => $this->employeeModel->getEmployee($id),
+            'divisi'    => $this->divisiModel->list(),
+            'title'     => 'Edit Employee'
         );
+        $this->employeeModel->save($data);
         $this->employeeModel->editEmployee($id);
         return view('admin/edit_employee', $data);
     }
@@ -150,10 +179,9 @@ class Employee extends BaseController
                 'degree'        => $this->request->getPost(['degree']),
                 'divisi'        => $this->request->getPost(['divisi']),
                 'position'      => $this->request->getPost(['position']),
-                'updated_at'    => $this->request->getPost(['updated_at']),
             ]);
-            $this->builder->where('id', $this->request->getPost('id'));
-            $this->builder->update(['employee']);
+            // $this->builder->where('id', $this->request->getPost('id'));
+            // $this->builder->update(['employee']);
             return redirect()->to(base_url('admin/detail_employee'));
         }
     }

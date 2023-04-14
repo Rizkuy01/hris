@@ -31,47 +31,170 @@ use App\Controllers\User;
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'User::index');
-$routes->get('/', 'Dashboard::index');
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->get(
+    '/',
+    'Dashboard::index'
+);
+$routes->get(
+    '/dashboard',
+    'Dashboard::index'
+);
 
-$routes->add('/admin', 'Admin:index');
-$routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
-$routes->get('/admin/index', 'Admin::index', ['filter' => 'role:Admin']);
-$routes->get('/admin/role', 'Role::index', ['filter' => 'role:Admin']);
-$routes->get('/admin/access/(:num)', 'Role::access/$1', ['filter' => 'role:Admin']);
-$routes->post('change-access', 'Role::changeaccess', ['filter' => 'role:Admin']);
-$routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:Admin']);
-$routes->get('/admin/employee', 'Employee::index', ['filter' => 'role:Admin']);
-$routes->get('/admin/add_user', 'User::add_user', ['filter' => 'role:Admin']);
-$routes->post('/admin/index', 'User::add_user', ['filter' => 'role:Admin']);
-$routes->post('/admin/index', 'User::save', ['filter' => 'role:Admin']);
+$routes->add(
+    '/admin',
+    'Admin:index'
+);
+$routes->get(
+    '/admin',
+    'Admin::index',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/index',
+    'Admin::index',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/role',
+    'Role::index',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/access/(:num)',
+    'Role::access/$1',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    'change-access',
+    'Role::changeaccess',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/(:num)',
+    'Admin::detail/$1',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/employee',
+    'Employee::index',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/add_user',
+    'User::add_user',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/admin/index',
+    'User::add_user',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/admin/index',
+    'User::save',
+    ['filter' => 'role:Admin']
+);
 
-$routes->get('/menu/menu', 'Menu::index', ['filter' => 'role:Admin']);
-$routes->get('/menu/addmenu', 'Menu::add_menu', ['filter' => 'role:Admin']);
-$routes->post('/menu/addmenu', 'Menu::add_menu', ['filter' => 'role:Admin']);
-$routes->get('Menu/delete/(:num)', 'Menu::delete/$1', ['filter' => 'role:Admin']);
+$routes->get(
+    '/menu/menu',
+    'Menu::index',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/menu/addmenu',
+    'Menu::add_menu',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/menu/addmenu',
+    'Menu::add_menu',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    'Menu/delete/(:num)',
+    'Menu::delete/$1',
+    ['filter' => 'role:Admin']
+);
 
 
 
-$routes->get('/employee/(:num)', 'Employee::detail/$1', ['filter' => 'role:Admin']);
+$routes->get(
+    '/employee/(:num)',
+    'Employee::detail/$1',
+    ['filter' => 'role:Admin']
+);
 
-$routes->get('/absensi', 'Absensi::index');
-$routes->get('/absensi/rekap', 'Absensi::rekap');
+$routes->get(
+    '/absensi',
+    'Absensi::index'
+);
+$routes->get(
+    '/absensi/rekap',
+    'Absensi::rekap'
+);
 
-$routes->get('/templates/404', 'Payroll::index', ['filter' => 'role:Admin']);
+$routes->get(
+    '/templates/404',
+    'Payroll::index',
+    ['filter' => 'role:Admin']
+);
 
-$routes->get('/user', 'User::index');
-$routes->get('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
-$routes->post('/user/add_user', 'User::add_user', ['filter' => 'role:Admin']);
-$routes->get('User/delete/(:num)', 'User::delete/$1', ['filter' => 'role:Admin']);
+$routes->get(
+    '/user',
+    'User::index'
+);
+$routes->get(
+    '/user/add_user',
+    'User::add_user',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/user/add_user',
+    'User::add_user',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    'User/delete/(:num)',
+    'User::delete/$1',
+    ['filter' => 'role:Admin']
+);
 
-$routes->get('/admin/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
-$routes->post('/employee/add_employee', 'Employee::add_employee', ['filter' => 'role:Admin']);
-$routes->get('Employee/delete/(:num)', 'Employee::delete/$1', ['filter' => 'role:Admin']);
-$routes->get('admin/edit_employee/(:num)', 'Employee::update/$1', ['filter' => 'role:Admin']);
-$routes->post('admin/edit_employee/(:num)', 'Employee::update/$1', ['filter' => 'role:Admin']);
+$routes->get(
+    '/admin/detail_employee',
+    'Employee::detail',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/admin/add_employee',
+    'Employee::add_employee',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/employee/add_employee',
+    'Employee::add_employee',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    'Employee/delete/(:num)',
+    'Employee::delete/$1',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    'Employee/edit_employee/(:num)',
+    'Employee::update/$1',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    'employee/edit_employee/(:num)',
+    'Employee::update/$1',
+    ['filter' => 'role:Admin']
+);
 
-$routes->get('/data_master/divisi', 'Datamaster::divisi', ['filter' => 'role:Admin']);
+$routes->get(
+    '/data_master/divisi',
+    'Datamaster::divisi',
+    ['filter' => 'role:Admin']
+);
 
 
 
