@@ -64,11 +64,6 @@ $routes->get(
     'Role::access/$1',
     ['filter' => 'role:Admin']
 );
-$routes->post(
-    'change-access',
-    'Role::changeaccess',
-    ['filter' => 'role:Admin']
-);
 $routes->get(
     '/admin/(:num)',
     'Admin::detail/$1',
@@ -86,15 +81,9 @@ $routes->get(
 );
 $routes->post(
     '/admin/index',
-    'User::add_user',
-    ['filter' => 'role:Admin']
-);
-$routes->post(
-    '/admin/index',
     'User::save',
     ['filter' => 'role:Admin']
 );
-
 $routes->get(
     '/menu/menu',
     'Menu::index',
@@ -105,25 +94,16 @@ $routes->get(
     'Menu::add_menu',
     ['filter' => 'role:Admin']
 );
-$routes->post(
-    '/menu/addmenu',
-    'Menu::add_menu',
-    ['filter' => 'role:Admin']
-);
 $routes->get(
     'Menu/delete/(:num)',
     'Menu::delete/$1',
     ['filter' => 'role:Admin']
 );
-
-
-
 $routes->get(
     '/employee/(:num)',
     'Employee::detail/$1',
     ['filter' => 'role:Admin']
 );
-
 $routes->get(
     '/absensi',
     'Absensi::index'
@@ -132,13 +112,11 @@ $routes->get(
     '/absensi/rekap',
     'Absensi::rekap'
 );
-
 $routes->get(
     '/templates/404',
     'Payroll::index',
     ['filter' => 'role:Admin']
 );
-
 $routes->get(
     '/user',
     'User::index'
@@ -148,17 +126,11 @@ $routes->get(
     'User::add_user',
     ['filter' => 'role:Admin']
 );
-$routes->post(
-    '/user/add_user',
-    'User::add_user',
-    ['filter' => 'role:Admin']
-);
 $routes->get(
     'User/delete/(:num)',
     'User::delete/$1',
     ['filter' => 'role:Admin']
 );
-
 $routes->get(
     '/admin/detail_employee',
     'Employee::detail',
@@ -166,11 +138,6 @@ $routes->get(
 );
 $routes->get(
     '/admin/add_employee',
-    'Employee::add_employee',
-    ['filter' => 'role:Admin']
-);
-$routes->post(
-    '/employee/add_employee',
     'Employee::add_employee',
     ['filter' => 'role:Admin']
 );
@@ -184,15 +151,56 @@ $routes->get(
     'Employee::update/$1',
     ['filter' => 'role:Admin']
 );
+$routes->get(
+    '/data_master/divisi',
+    'Datamaster::divisi',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/data_master/position',
+    'Datamaster::position',
+    ['filter' => 'role:Admin']
+);
+$routes->get(
+    '/data_master/add_position',
+    'Datamaster::add_position',
+    ['filter' => 'role:Admin']
+);
+
+
+$routes->post(
+    '/data_master/add_position',
+    'Datamaster::add_position',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/admin/index',
+    'User::add_user',
+    ['filter' => 'role:Admin']
+);
 $routes->post(
     'employee/edit_employee/(:num)',
     'Employee::update/$1',
     ['filter' => 'role:Admin']
 );
-
-$routes->get(
-    '/data_master/divisi',
-    'Datamaster::divisi',
+$routes->post(
+    '/employee/add_employee',
+    'Employee::add_employee',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/user/add_user',
+    'User::add_user',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    '/menu/addmenu',
+    'Menu::add_menu',
+    ['filter' => 'role:Admin']
+);
+$routes->post(
+    'change-access',
+    'Role::changeaccess',
     ['filter' => 'role:Admin']
 );
 
@@ -202,9 +210,9 @@ $routes->get(
 
 
 /*
- * --------------------------------------------------------------------
- * Additional Routing
- * --------------------------------------------------------------------
+* --------------------------------------------------------------------
+* Additional Routing
+* --------------------------------------------------------------------
  *
  * There will often be times that you need additional routing and you
  * need it to be able to override any defaults in this file. Environment

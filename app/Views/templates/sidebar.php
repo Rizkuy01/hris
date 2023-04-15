@@ -160,7 +160,7 @@
 
         <!-- Nav Item - Position -->
         <li class="nav-item">
-            <a class="nav-link pb-0" href="<?= base_url('templates/404') ?>">
+            <a class="nav-link pb-0" href="<?= base_url('data_master/position') ?>">
                 <i class="fas fa-id-card-alt"></i>
                 <span>Position</span></a>
         </li>
