@@ -31,7 +31,7 @@
                     <?php foreach ($users as $user) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
-                            <td><?= $user->username; ?></td>
+                            <td><img src="<?= base_url('/img/' . $user->user_image); ?>" class="img-fluid rounded-start mr-3" style="width: 30px;"><?= $user->username; ?></td>
                             <td><?= $user->email; ?></td>
                             <td><?= $user->name; ?></td>
                             <td>

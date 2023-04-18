@@ -34,13 +34,13 @@ class User extends BaseController
             return view('admin/add_user', $data);
         }
 
-        $post = $this->request->getPost(['fullname', 'username', 'email']);
+        $post = $this->request->getPost(['fullname', 'username', 'email', 'password_hash']);
 
         if (!$this->validateData($post, [
             'fullname'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'username'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'email'             => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'password'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'password_hash'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();

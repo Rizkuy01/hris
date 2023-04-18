@@ -29,7 +29,7 @@
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $pos->title; ?></td>
-                            <td><?= $pos->division; ?></td>
+                            <td><?= $pos->posisi; ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

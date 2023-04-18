@@ -16,9 +16,9 @@ class M_Posisi extends Model
         $this->builder = $this->db->table('position');
 
         $this->builder->select(
-            'position.id as idposisi, 
-            position.name as title,
-            division'
+            'position.name as title,
+            position.division as div,
+            divisi.name as posisi'
         );
         $this->builder->join('divisi', 'divisi.id = position.division');
         $query = $this->builder->get();

@@ -32,11 +32,11 @@
                     <?php foreach ($users as $user) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
-                            <td><?= $user->name; ?></td>
+                            <td><img src="<?= base_url('/img/' . $user->img); ?>" class="img-fluid rounded-start mr-3" style="width: 30px;"><?= $user->name; ?></td>
                             <td><?= $user->email; ?></td>
                             <td><?= $user->position; ?></td>
                             <td>
-                                <a href="<?= base_url('employee/' . $user->employeeid); ?>" class="badge badge-info">details</a>
+                                <a href=" <?= base_url('employee/' . $user->employeeid); ?>" class="badge badge-info">details</a>
                                 <a href="<?= base_url('Employee/delete/' . $user->employeeid) ?>" class="badge badge-danger" onclick="return confirm('Are you sure ?')">Delete</a>
                             </td>
                         </tr>

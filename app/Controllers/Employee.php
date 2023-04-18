@@ -5,13 +5,14 @@ namespace App\Controllers;
 class Employee extends BaseController
 {
 
-    protected $db, $builder, $employeeModel, $divisiModel;
+    protected $db, $builder, $employeeModel, $divisiModel, $posisiModel;
     public function __construct()
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('employee');
         $this->employeeModel = new \App\Models\M_Employee();
         $this->divisiModel = new \App\Models\M_Divisi();
+        $this->posisiModel = new \App\Models\M_Posisi();
     }
     public function index()
     {
@@ -63,6 +64,9 @@ class Employee extends BaseController
         ];
         $divisi = $this->divisiModel->list();
         $data['divisi'] = $divisi;
+
+        $posisi = $this->posisiModel->list();
+        $data['posisi'] = $posisi;
 
         helper('form');
 
