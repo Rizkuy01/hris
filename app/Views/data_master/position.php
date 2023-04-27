@@ -9,7 +9,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-2">
             <!-- Button trigger modal -->
             <div class="mb-3">
                 <a href="/data_master/add_position" type="button" class="btn btn-primary">Add New Position</a>
@@ -20,7 +20,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">name</th>
-                        <th scope="col">division</th>
+                        <!-- <th scope="col">division</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,7 @@
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $pos->title; ?></td>
-                            <td><?= $pos->posisi; ?></td>
+                            <!-- <td><?= $pos->posisi; ?></td> -->
                         </tr>
                     <?php endforeach ?>
                 </tbody>

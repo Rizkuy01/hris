@@ -136,10 +136,13 @@ class Employee extends BaseController
         $data = array(
             'post'      => $this->employeeModel->getEmployee($id),
             'divisi'    => $this->divisiModel->list(),
+            'posisi'    => $this->posisiModel->list(),
             'title'     => 'Edit Employee'
         );
+
         $this->employeeModel->save($data);
         $this->employeeModel->editEmployee($id);
+
         return view('admin/edit_employee', $data);
     }
 
@@ -164,10 +167,11 @@ class Employee extends BaseController
 
         if (!$validation) {
             return view('admin/edit_employee', [
-                'post' => $this->employeeModel->find($id),
-                'validation' => $this->validator,
-                'divisi' => $this->divisiModel->list(),
-                'title' => 'Edit Employee'
+                'post'          => $this->employeeModel->find($id),
+                'validation'    => $this->validator,
+                'divisi'        => $this->divisiModel->list(),
+                'posisi'        => $this->posisiModel->list(),
+                'title'         => 'Edit Employee'
             ]);
         } else {
             $this->employeeModel->update($id, [
@@ -184,8 +188,6 @@ class Employee extends BaseController
                 'divisi'        => $this->request->getPost(['divisi']),
                 'position'      => $this->request->getPost(['position']),
             ]);
-            // $this->builder->where('id', $this->request->getPost('id'));
-            // $this->builder->update(['employee']);
             return redirect()->to(base_url('admin/detail_employee'));
         }
     }

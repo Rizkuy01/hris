@@ -4,14 +4,32 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-    <p>Welcome! </p>
-    <!-- <a class="card text-white bg-success mb-3 rounded-lg" style="max-width: 18rem;" onclick="<?= base_url("absensi/index") ?>" cursor="pointer">
-        <div class="card-header text-white bg-success mb-3">Absensi Karyawan</div>
-        <div class="card-body">
-            <h5 class="card-title">Success card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p>Welcome, <?= user()->username; ?>! </p>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="<?= base_url('/img/' . user()->user_image); ?>" class="img-fluid rounded-start mt-4 ml-4" alt="<?= user()->fullname ?>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h4><?= user()->fullname; ?></h4>
+                                </li>
+
+                                <li class="list-group-item"><?= user()->email; ?></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a> -->
+    </div>
+
 </div>
 
 <?= $this->endSection(); ?>

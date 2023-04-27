@@ -66,13 +66,18 @@
                     <select name="divisi" id="divisi" class="form-control" value="<?= $post['divisi'] ?>">
                         <option value="">Divisi</option>
                         <?php foreach ($divisi as $div) : ?>
-                            <option value=" <?= $div->id; ?>"><?= $div->name; ?></option>
+                            <option value="<?= $div->name; ?>"><?= $div->name; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <!-- position -->
                 <div class="form-group">
-                    <input type="text" class="form-control" id="position" name="position" placeholder="Add position" value="<?= $post['position'] ?>" autocomplite="off">
+                    <select name="position" id="position" class="form-control" value="<?= $post['position'] ?>">
+                        <option value="">Position</option>
+                        <?php foreach ($posisi as $pos) : ?>
+                            <option value="<?= $pos->title; ?>"><?= $pos->title; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
             </div>
