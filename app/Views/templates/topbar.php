@@ -7,7 +7,7 @@
     </button>
     <div class="datetime">
 
-        <h1 class="h3 mt-4 text-gray-800"><?php
+        <h1 class="h3 mt-3 text-gray-800"><?php
                                             date_default_timezone_set("Asia/Jakarta");
                                             echo $runningTime = date("l, d F Y");
                                             ?></h1>

@@ -23,6 +23,9 @@
     <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4JlgDwvj9f7M99YQ3LjFp1lQ2g1EOSjM"></script>
+
+
 </head>
 
 <body id="page-top">

@@ -40,7 +40,7 @@ class User extends BaseController
             'fullname'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'username'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'email'             => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'password_hash'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'password_hash'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
