@@ -203,7 +203,10 @@ $routes->post(
     'Role::changeaccess',
     ['filter' => 'role:Admin']
 );
-
+$routes->post(
+    'index/absensi',
+    'Absensi::index',
+);
 
 
 

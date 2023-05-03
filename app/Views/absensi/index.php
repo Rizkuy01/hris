@@ -10,10 +10,35 @@
     <div class="content col-lg-4">
         <form action="<?= base_url('index/absensi'); ?>" method="post" id="employee_attendance">
             <div class="body">
+                <!-- form nama -->
+                <label>Nama:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your name..." value="" autocomplite="off">
+                </div>
+                <!-- form posisi -->
+                <label>Posisi:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Current Position" value="" autocomplite="off">
+                </div>
+                <!-- form divisi -->
+                <label>Divisi:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="divisi" name="divisi" placeholder="Current Division" value="" autocomplite="off">
+                </div>
                 <label for="lokasi">Lokasi:</label>
+                <!-- menentukan koordinat lokasi -->
+                <div id="lokasi-label">Klik tombol "Ambil Lokasi" untuk mendapatkan kooordinat lokasi anda.</div>
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+                <button type="button" onclick="coordinate()">Ambil Lokasi</button><br>
+
+                <!-- memvisualisasikan lokasi -->
+                <label for="lokasi">Maps : </label>
                 <div id="map-box" style="display:none">
                     <div id="map" style="height: 400px;"></div>
                 </div>
+
+
             </div>
             <div class="footer">
                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
@@ -24,7 +49,8 @@
 </div>
 
 <script>
-    function getLocation() {
+    // fungsi menentukan koordinat
+    function coordinate() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -83,7 +109,7 @@
 
     function submitForm() {
         // Mendapatkan nilai lokasi dari input
-        var location = document.getElementById("location").value;
+        var location = document.getElementById("lokasi-label").value;
 
         // Mendapatkan nilai kamera dari input
         var camera = document.getElementById("camera").files[0];
