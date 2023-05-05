@@ -9,17 +9,23 @@ class Absensi extends BaseController
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('kehadiran');
+        $this->employeeModel = new \App\Models\M_Employee();
+        $this->divisiModel  = new \App\Models\M_Divisi();
+        $this->posisiModel = new \App\Models\M_Posisi();
     }
     public function index()
     {
         $data = [
-            'title' => 'Form Absensi',
+            // 'post'      => $this->employeeModel->getEmployee($id),
+            // 'divisi'    => $this->divisiModel->list(),
+            // 'posisi'    => $this->posisiModel->list(),
+            'title'     => 'Form Absensi'
         ];
         return view('absensi/index', $data);
     }
     public function rekap()
     {
-        $data['title'] = 'Rekap Absensi Bulanan';
+        $data['title'] = 'Rekap Absensi';
         return view('absensi/rekap', $data);
     }
 }

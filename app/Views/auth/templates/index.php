@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="https://ciptagrafika.com/wp-content/uploads/cg-logo-png.png" type="x-icon">
 
-    <title>HR Login</title>
+    <title>Login / Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
