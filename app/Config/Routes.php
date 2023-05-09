@@ -166,6 +166,10 @@ $routes->get(
     'Datamaster::add_position',
     ['filter' => 'role:Admin']
 );
+$routes->get(
+    '/user/edit',
+    'User::data_user'
+);
 
 
 $routes->post(

@@ -43,9 +43,29 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Add email" value="<?= set_value('email') ?>" autocomplete="off">
                 </div>
-                <div class=" form-group row">
+                <div class="form-group">
+                    <select name="divisi" id="divisi" class="form-control" value="<?= set_value('divisi') ?>">
+                        <option value="">Divisi</option>
+                        <?php foreach ($divisi as $div) : ?>
+                            <option value=" <?= $div->name; ?>"><?= $div->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="position" id="position" class="form-control" value="<?= set_value('position') ?>">
+                        <option value="">Position</option>
+                        <?php foreach ($posisi as $pos) : ?>
+                            <option value=" <?= $pos->title; ?>"><?= $pos->title; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <!-- password -->
+                <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="password_hash" name="password_hash" value="<?= set_value('password_hash') ?>" placeholder="Password">
+                        <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="exampleInputPassword" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control form-control-user <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" name="pass_confirm" id="exampleRepeatPassword" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
                     </div>
                 </div>
             </div>

@@ -137,7 +137,7 @@
 
     <!-- Nav Item - Edit profile -->
     <li class="nav-item">
-        <a class="nav-link pb-0" href="<?= base_url('templates/404') ?>">
+        <a class="nav-link pb-0" href="<?= base_url('user/edit') ?>">
             <i class="fas fa-user-edit"></i>
             <span>Edit Profile</span></a>
     </li>

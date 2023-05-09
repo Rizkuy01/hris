@@ -30,7 +30,7 @@
                 <div id="lokasi-label">Klik tombol 'Ambil Lokasi' untuk mendapatkan kooordinat lokasi anda.</div>
                 <input type="text" id="latitude" name="latitude" placeholder="latitude">
                 <input type="text" id="longitude" name="longitude" placeholder="longitude">
-                <a type="button" class="badge badge-pill badge-warning" onclick="coordinate()">Ambil Lokasi</a><br>
+                <btn type="button" class="btn btn-pill btn-success" onclick="coordinate()">Ambil Lokasi</btn><br>
 
                 <!-- memvisualisasikan lokasi -->
                 <label for="lokasi" id="lokasi">Maps : </label>

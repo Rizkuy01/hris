@@ -6,18 +6,26 @@ use App\Models\M_User;
 
 class User extends BaseController
 {
-    protected $db, $builder, $userModel;
+    protected $db, $builder, $userModel, $divisiModel, $posisiModel;
 
     public function __construct()
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('users');
         $this->userModel = new M_User();
+        $this->divisiModel = new \App\Models\M_Divisi();
+        $this->posisiModel = new \App\Models\M_Posisi();
     }
     public function index()
     {
         $data['title'] = 'My Profile';
         return view('user/index', $data);
+    }
+
+    public function data_user()
+    {
+        $data['title'] = 'Add Data';
+        return view('user/edit', $data);
     }
 
 
@@ -26,6 +34,11 @@ class User extends BaseController
         $data = [
             'title' => 'Add User',
         ];
+        $divisi = $this->divisiModel->list();
+        $data['divisi'] = $divisi;
+
+        $posisi = $this->posisiModel->list();
+        $data['posisi'] = $posisi;
         // $data['title']  = 'User List';
 
         helper('form');
@@ -34,12 +47,14 @@ class User extends BaseController
             return view('admin/add_user', $data);
         }
 
-        $post = $this->request->getPost(['fullname', 'username', 'email', 'password_hash']);
+        $post = $this->request->getPost(['fullname', 'username', 'email', 'divisi', 'position', 'password_hash']);
 
         if (!$this->validateData($post, [
             'fullname'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'username'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'email'             => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'divisi'            => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'position'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'password_hash'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
@@ -51,6 +66,8 @@ class User extends BaseController
             'fullname'          => $post['fullname'],
             'username'          => $post['username'],
             'email'             => $post['email'],
+            'divisi'            => $post['divisi'],
+            'position'          => $post['position'],
             'password_hash'     => $post['password_hash'],
         ];
         $this->userModel->insert_user($dataUser);
