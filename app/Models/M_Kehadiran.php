@@ -27,4 +27,10 @@ class M_Kehadiran extends Model
         $query = $this->builder->get();
         return $query->getResult();
     }
+
+    public function insert_absen($dataAbsen)
+    {
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('kehadiran')->insert($dataAbsen);
+    }
 }

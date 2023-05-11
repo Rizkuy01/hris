@@ -8,30 +8,35 @@
     <h1 class="h3 mb-4 text-gray-800">Form Absensi</h1>
 
     <div class="content col-lg-4">
-        <form action="<?= base_url('index/absensi'); ?>" method="post" id="employee_attendance">
+        <form action="<?= base_url('absensi/add_absensi'); ?>" method="post" id="employee_attendance">
             <div class="body">
                 <!-- form nama -->
                 <label>Nama:</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="your name..." value="<?= user()->fullname ?>" autocomplite="off" disabled>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="your name..." value="<?= user()->fullname ?>" autocomplite="off">
                 </div>
                 <!-- form posisi -->
                 <label>Posisi:</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Current Position" value="<?= user()->position ?>" autocomplite="off" disabled>
+                    <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Current Position" value="<?= user()->position ?>" autocomplite="off">
                 </div>
                 <!-- form divisi -->
                 <label>Divisi:</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="divisi" name="divisi" placeholder="Current Division" value="<?= user()->divisi ?>" autocomplite="off" disabled>
+                    <input type="text" class="form-control" id="divisi" name="divisi" placeholder="Current Division" value="<?= user()->divisi ?> " autocomplite="off">
                 </div>
-                <label for="lokasi">Lokasi:</label>
                 <!-- menentukan koordinat lokasi -->
+                <label for="lokasi">Lokasi:</label>
                 <div id="lokasi-label">Klik tombol 'Ambil Lokasi' untuk mendapatkan kooordinat lokasi anda.</div>
                 <input type="text" id="latitude" name="latitude" placeholder="latitude">
                 <input type="text" id="longitude" name="longitude" placeholder="longitude">
                 <btn type="button" class="btn btn-pill btn-success" onclick="coordinate()">Ambil Lokasi</btn><br>
 
+                <!-- link google maps -->
+                <label>Link Google Maps:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="gmaps" name="gmaps" placeholder="Link Google Maps" value="www.google.com/maps/search/?api=1&query=(latitude),(longitude)" autocomplite="off">
+                </div>
                 <!-- memvisualisasikan lokasi -->
                 <label for="lokasi" id="lokasi">Maps : </label>
                 <div id="map-box" style="display:none">
@@ -66,8 +71,8 @@
 
         // Menampilkan hasil lokasi pada label
 
-        // var lokasiLabel = document.getElementById("lokasi-label");
-        // lokasiLabel.innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude + " (<a href='" + mapUrl + "' target='_blank'>Lihat di Google Maps</a>)";
+        var lokasiLabel = document.getElementById("lokasi-label");
+        lokasiLabel.innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude + " (<a href='" + mapUrl + "' target='_blank'>Lihat di Google Maps</a>)";
     }
 
 

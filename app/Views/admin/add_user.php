@@ -79,8 +79,6 @@
             <div class="footer">
                 <a href="<?= base_url('admin/index'); ?>" type="button" class="btn btn-secondary">Go back</a>
                 <button type="submit" class="btn btn-primary">
-                    <?= lang('Auth.register') ?>
-                </button>
             </div>
         </form>
     </div>

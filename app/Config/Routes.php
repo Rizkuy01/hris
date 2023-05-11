@@ -106,7 +106,11 @@ $routes->get(
 );
 $routes->get(
     '/absensi',
-    'Absensi::index'
+    'Absensi::add_absensi'
+);
+$routes->get(
+    'absensi/index',
+    'Absensi::add_absensi'
 );
 $routes->get(
     '/absensi/rekap',
@@ -208,8 +212,8 @@ $routes->post(
     ['filter' => 'role:Admin']
 );
 $routes->post(
-    'index/absensi',
-    'Absensi::index',
+    'absensi/index',
+    'Absensi::add_absensi',
 );
 
 
