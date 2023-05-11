@@ -60,18 +60,27 @@
                     </select>
                 </div>
                 <!-- password -->
-                <div class="form-group row">
+                <div class=" form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="exampleInputPassword" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="password" class="form-control form-control-user <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" name="pass_confirm" id="exampleRepeatPassword" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
+                        <input type="password" class="form-control form-control-user" id="password_hash" name="password_hash" value="<?= set_value('password_hash') ?>" placeholder="Password">
                     </div>
                 </div>
+                <!-- <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="password"><?= lang('Auth.password') ?></label>
+                        <input type="password" name="password" class="form-control <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" id="password_hash" name="password_hash" value="<?= set_value('password_hash') ?>" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="pass_confirm"><?= lang('Auth.repeatPassword') ?></label>
+                        <input type="password" name="pass_confirm" class="form-control <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
+                    </div>
+                </div> -->
             </div>
             <div class="footer">
                 <a href="<?= base_url('admin/index'); ?>" type="button" class="btn btn-secondary">Go back</a>
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">
+                    <?= lang('Auth.register') ?>
+                </button>
             </div>
         </form>
     </div>

@@ -30,8 +30,8 @@
                                     </div>
 
                                     <!-- divisi -->
-                                    <!-- <div class="form-group">
-                                        <select name="Divisi" id="Divisi" class="form-control form-control-user" value="" placeholder="divisi">
+                                    <div class="form-group">
+                                        <select name="Divisi" id="Divisi" class="form-control" value="<?= set_value('divisi') ?>" placeholder="divisi">
                                             <option value="">Divisi</option>
                                             <option value="">Graha</option>
                                             <option value="">Cipta Digital</option>
@@ -41,11 +41,11 @@
                                             <option value="">Cipta Online</option>
                                             <option value="">Corporate</option>
                                         </select>
-                                    </div> -->
+                                    </div>
 
                                     <!-- Posisi -->
-                                    <!-- <div class="form-group">
-                                        <select name="position" id="position" class="form-control form-control-user" value="">
+                                    <div class="form-group">
+                                        <select name="position" id="position" class="form-control" value="<?= set_value('position') ?>">
                                             <option value="">Position</option>
                                             <option value="">HR</option>
                                             <option value="">IT</option>
@@ -64,7 +64,7 @@
                                             <option value="">Delivery</option>
                                             <option value="">Outsourcing</option>
                                         </select>
-                                    </div> -->
+                                    </div>
 
 
                                     <!-- password -->
