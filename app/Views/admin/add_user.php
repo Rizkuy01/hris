@@ -78,7 +78,7 @@
             </div>
             <div class="footer">
                 <a href="<?= base_url('admin/index'); ?>" type="button" class="btn btn-secondary">Go back</a>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary">Add</button>
             </div>
         </form>
     </div>

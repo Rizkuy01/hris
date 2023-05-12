@@ -5,7 +5,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Welcome, <?= user()->username; ?>!</h1>
 
-    <div class="row">
+    <div class="row p-2">
         <!-- mini profile -->
         <div class="row-lg-8 mx-3">
             <div class="card mb-3" style="max-width: 540px;">
@@ -28,7 +28,7 @@
         </div>
         <!-- worktime countdown -->
         <div class="row-lg-8 mx-3">
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card pb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col">
                         <div class="card-body">
@@ -86,6 +86,25 @@
         endDate.setDate(endDate.getDate() + 1);
         endDate.setHours(17, 0, 0, 0);
         startCountdown();
+    }
+
+    // notifikasi waktu habis
+    function showNotification() {
+        if (Notification.permission === "granted") {
+            var notification = new Notification("TIME TO GO HOME!", {
+                body: "Waktu sudah menunjukkan pukul 17:00.",
+                icon: "cg-logo.webp" // Ganti dengan URL ikon notifikasi Anda
+            });
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(function(permission) {
+                if (permission === "granted") {
+                    var notification = new Notification("TIME TO GO HOME!", {
+                        body: "Waktu sudah menunjukkan pukul 17:00.",
+                        icon: "cg-logo.webp" // Ganti dengan URL ikon notifikasi Anda
+                    });
+                }
+            });
+        }
     }
 
     // Start the countdown when the page loads

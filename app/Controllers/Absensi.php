@@ -17,9 +17,6 @@ class Absensi extends BaseController
     public function add_absensi()
     {
         $data = [
-            // 'post'      => $this->employeeModel->getEmployee($id),
-            // 'divisi'    => $this->divisiModel->list(),
-            // 'posisi'    => $this->posisiModel->list(),
             'title'     => 'Form Absensi'
         ];
 
@@ -31,19 +28,18 @@ class Absensi extends BaseController
 
         helper('form');
         if (!$this->request->is('post')) {
-            return view('absensi/index', $data);;
+            return view('absensi/index', $data);
         }
-        $post = $this->request->getPost(['nama', 'position', 'divisi', 'lokasi', 'waktu']);
-
+        $post = $this->request->getPost(['nama', 'position', 'divisi', 'lokasi']);
         if (!$this->validateData($post, [
             'nama'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'position'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'divisi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'lokasi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            // 'waktu'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
-            // session()->setFlashdata('success', 'Post Berhasil Disimpan');
         }
 
         $dataAbsen = [
@@ -51,13 +47,17 @@ class Absensi extends BaseController
             'position'  => $post['position'],
             'divisi'    => $post['divisi'],
             'lokasi'    => $post['lokasi'],
+            // 'waktu'     => $post['waktu'],
         ];
         $this->kehadiranModel->insert_absen($dataAbsen);
-        return redirect('absensi/index')->with('success', 'Data Added Successfully');
+        return redirect('absensi/rekap')->with('success', 'Data Added Successfully');
     }
     public function rekap()
     {
         $data['title'] = 'Rekap Absensi';
+
+        $absen = $this->kehadiranModel->list();
+        $data['absen'] = $absen;
         return view('absensi/rekap', $data);
     }
 }

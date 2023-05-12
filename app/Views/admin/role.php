@@ -13,7 +13,7 @@
         <div class="col-lg-6">
             <!-- Button trigger modal -->
             <div class="mb-3">
-                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRoleModal">Add Role</a>
+                <!-- <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRoleModal">Add Role</a> -->
             </div>
 
             <table class="table table-hover" id="table-role" width="100%" cellspacing="0">
@@ -54,10 +54,7 @@
             <form action="<?= base_url('admin/index'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="fullname" placeholder="Add username">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Add email">
+                        <input type="text" class="form-control" id="name" name="fullname" placeholder="Add role name">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="role" name="role" placeholder="Add role">

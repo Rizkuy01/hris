@@ -122,7 +122,7 @@ class Employee extends BaseController
             'position'      => $post['position'],
         ];
         $this->employeeModel->insert_employee($dataEmployee);
-        return redirect('admin/employee')->with('success', 'Data Added Successfully');
+        return redirect('dashboard/index')->with('success', 'Data Added Successfully');
     }
 
     public function delete($id)

@@ -7,36 +7,57 @@
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Form Absensi</h1>
 
+    <!-- //error validation -->
+    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+        <div class="alert alert-danger alert-dismissible fade show col-lg-6" role="alert">
+            <h4>Form Validation</h4>
+            </hr />
+            <?php echo session()->getFlashdata('error'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+
     <div class="content col-lg-4">
-        <form action="<?= base_url('absensi/add_absensi'); ?>" method="post" id="employee_attendance">
+        <form action="<?= base_url('absensi/index'); ?>" method="post" id="employee_attendance">
             <div class="body">
+
                 <!-- form nama -->
                 <label>Nama:</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="your name..." value="<?= user()->fullname ?>" autocomplite="off">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="your name..." value="<?= user()->fullname ?>" autocomplite="off">
+                    <!-- <input type="text" class="form-control" id="name" name="name" placeholder="your name..." value="<?= set_value('nama') ?>" autocomplite="off"> -->
                 </div>
+
                 <!-- form posisi -->
                 <label>Posisi:</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Current Position" value="<?= user()->position ?>" autocomplite="off">
+                    <input type="text" class="form-control" id="position" name="position" placeholder="Current Position" value="<?= user()->position ?>" autocomplite="off">
+                    <!-- <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Current Position" value="<?= set_value('position') ?>" autocomplite="off"> -->
                 </div>
+
                 <!-- form divisi -->
                 <label>Divisi:</label>
                 <div class="form-group">
                     <input type="text" class="form-control" id="divisi" name="divisi" placeholder="Current Division" value="<?= user()->divisi ?> " autocomplite="off">
+                    <!-- <input type="text" class="form-control" id="divisi" name="divisi" placeholder="Current Division" value="<?= set_value('divisi') ?> " autocomplite="off"> -->
                 </div>
+
                 <!-- menentukan koordinat lokasi -->
                 <label for="lokasi">Lokasi:</label>
                 <div id="lokasi-label">Klik tombol 'Ambil Lokasi' untuk mendapatkan kooordinat lokasi anda.</div>
                 <input type="text" id="latitude" name="latitude" placeholder="latitude">
                 <input type="text" id="longitude" name="longitude" placeholder="longitude">
-                <btn type="button" class="btn btn-pill btn-success" onclick="coordinate()">Ambil Lokasi</btn><br>
+                <btn type="button" class="btn btn-pill btn-success ml-3 mb-1" onclick="coordinate()">Ambil Lokasi</btn><br>
 
                 <!-- link google maps -->
-                <label>Link Google Maps:</label>
+                <label>Link Google Maps: (copykan koordinat pada kolom yang tersedia)</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="gmaps" name="gmaps" placeholder="Link Google Maps" value="www.google.com/maps/search/?api=1&query=(latitude),(longitude)" autocomplite="off">
+                    <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Link Google Maps" value="www.google.com/maps/search/?api=1&query=(latitude),(longitude)" autocomplite="off">
+                    <!-- <input type="text" class="form-control" id="gmaps" name="gmaps" placeholder="Link Google Maps" value="<?= set_value('lokasi') ?>" autocomplite="off"> -->
                 </div>
+
                 <!-- memvisualisasikan lokasi -->
                 <label for="lokasi" id="lokasi">Maps : </label>
                 <div id="map-box" style="display:none">
@@ -45,7 +66,7 @@
 
             </div>
             <div class="footer">
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn-primary my-3 col-lg-12">Add</button>
             </div>
         </form>
     </div>
@@ -100,7 +121,7 @@
         });
         // Menampilkan kotak visualisasi lokasi
         var locationInput = document.getElementById("lokasi");
-        locationInput.readOnly = true;
+        locationInput.readOnly = false;
         locationInput.style.display = "block";
         mapElement.style.display = "block";
     }

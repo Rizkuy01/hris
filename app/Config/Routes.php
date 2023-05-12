@@ -212,6 +212,10 @@ $routes->post(
     ['filter' => 'role:Admin']
 );
 $routes->post(
+    'absensi/add_absensi',
+    'Absensi::add_absensi',
+);
+$routes->post(
     'absensi/index',
     'Absensi::add_absensi',
 );
