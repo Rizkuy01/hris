@@ -19,6 +19,7 @@
                         <th scope="col">posisi</th>
                         <th scope="col">divisi</th>
                         <th scope="col">lokasi</th>
+                        <th scope="col">foto</th>
                         <th scope="col">waktu absen</th>
                     </tr>
                 </thead>
@@ -30,7 +31,8 @@
                             <td><?= $a->nama; ?></td>
                             <td><?= $a->position; ?></td>
                             <td><?= $a->divisi; ?></td>
-                            <td><?= $a->lokasi; ?></td>
+                            <td><a href="<?= $a->lokasi; ?>" target="_blank"><?= $a->lokasi; ?></a></td>
+                            <td><img src="<?= $a->foto; ?>" alt="Foto"></td>
                             <td><?= $a->waktu; ?></td>
                         </tr>
                     <?php endforeach ?>

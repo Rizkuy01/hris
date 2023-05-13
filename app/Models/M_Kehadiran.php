@@ -15,6 +15,7 @@ class M_Kehadiran extends Model
         'position',
         'divisi',
         'lokasi',
+        'foto',
         'waktu',
     ];
 
@@ -23,7 +24,7 @@ class M_Kehadiran extends Model
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('kehadiran');
 
-        $this->builder->select('kehadiran.id as idabsen, nama, position, divisi, lokasi, waktu');
+        $this->builder->select('kehadiran.id as idabsen, nama, position, divisi, lokasi, foto, waktu');
         $query = $this->builder->get();
         return $query->getResult();
     }

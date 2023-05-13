@@ -30,12 +30,13 @@ class Absensi extends BaseController
         if (!$this->request->is('post')) {
             return view('absensi/index', $data);
         }
-        $post = $this->request->getPost(['nama', 'position', 'divisi', 'lokasi']);
+        $post = $this->request->getPost(['nama', 'position', 'divisi', 'lokasi', 'foto']);
         if (!$this->validateData($post, [
             'nama'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'position'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'divisi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'lokasi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'foto'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             // 'waktu'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
@@ -47,6 +48,7 @@ class Absensi extends BaseController
             'position'  => $post['position'],
             'divisi'    => $post['divisi'],
             'lokasi'    => $post['lokasi'],
+            'foto'    => $post['foto'],
             // 'waktu'     => $post['waktu'],
         ];
         $this->kehadiranModel->insert_absen($dataAbsen);

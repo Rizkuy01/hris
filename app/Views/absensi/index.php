@@ -52,10 +52,16 @@
                 <btn type="button" class="btn btn-pill btn-success ml-3 mb-1" onclick="coordinate()">Ambil Lokasi</btn><br>
 
                 <!-- link google maps -->
-                <label>Link Google Maps: (copykan koordinat pada kolom yang tersedia)</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Link Google Maps" value="www.google.com/maps/search/?api=1&query=(latitude),(longitude)" autocomplite="off">
+                    <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Link Google Maps" value="" autocomplite="off">
                     <!-- <input type="text" class="form-control" id="gmaps" name="gmaps" placeholder="Link Google Maps" value="<?= set_value('lokasi') ?>" autocomplite="off"> -->
+                </div>
+
+                <!-- open camera -->
+                <label for="foto">Foto Absensi:</label>
+                <div class="form-group">
+                    <input type="file" id="foto" name="foto" accept="image/*" capture="camera" class="form-control">
+                    <button type="button" class="btn btn-primary mt-3" onclick="openCamera()">Ambil Foto</button>
                 </div>
 
                 <!-- memvisualisasikan lokasi -->
@@ -63,6 +69,7 @@
                 <div id="map-box" style="display:none">
                     <div id="map" style="height: 400px;"></div>
                 </div>
+
 
             </div>
             <div class="footer">
@@ -91,9 +98,12 @@
         var mapUrl = "https://www.google.com/maps/search/?api=1&query=" + position.coords.latitude + "," + position.coords.longitude;
 
         // Menampilkan hasil lokasi pada label
-
         var lokasiLabel = document.getElementById("lokasi-label");
         lokasiLabel.innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude + " (<a href='" + mapUrl + "' target='_blank'>Lihat di Google Maps</a>)";
+
+        // Mengisi nilai form dengan link Google Maps
+        var lokasiForm = document.getElementById("lokasi");
+        lokasiForm.value = mapUrl;
     }
 
 
@@ -145,6 +155,64 @@
             alert("Geolocation tidak didukung oleh browser Anda.");
         }
     }
+
+    // Akses kamera
+    function openCamera() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({
+                    video: true
+                })
+                .then(function(stream) {
+                    var video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function() {
+                        video.play();
+                    };
+
+                    var captureButton = document.createElement('button');
+                    captureButton.textContent = 'Ambil';
+                    captureButton.onclick = function() {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        var context = canvas.getContext('2d');
+                        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                        var fotoInput = document.getElementById('foto');
+                        var foto = canvas.toDataURL('image/jpeg', 0.5);
+                        fotoInput.value = foto;
+
+                        video.srcObject = null;
+                        stream.getTracks().forEach(function(track) {
+                            track.stop();
+                        });
+                    };
+
+                    var cancelButton = document.createElement('button');
+                    cancelButton.textContent = 'Batal';
+                    cancelButton.onclick = function() {
+                        video.srcObject = null;
+                        stream.getTracks().forEach(function(track) {
+                            track.stop();
+                        });
+                    };
+
+                    var videoContainer = document.createElement('div');
+                    videoContainer.appendChild(video);
+                    videoContainer.appendChild(captureButton);
+                    videoContainer.appendChild(cancelButton);
+
+                    var formGroup = document.getElementById('lokasi');
+                    formGroup.appendChild(videoContainer);
+                })
+                .catch(function(error) {
+                    console.error('Error accessing camera: ', error);
+                });
+        } else {
+            console.error('Camera not supported');
+        }
+    }
+
 
     function submitForm() {
         // Mendapatkan nilai lokasi dari input

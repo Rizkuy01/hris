@@ -6,7 +6,7 @@ use App\Models\M_User;
 
 class User extends BaseController
 {
-    protected $db, $builder, $userModel, $divisiModel, $posisiModel;
+    protected $db, $builder, $userModel, $divisiModel, $posisiModel, $employeeModel;
 
     public function __construct()
     {
@@ -15,6 +15,7 @@ class User extends BaseController
         $this->userModel = new M_User();
         $this->divisiModel = new \App\Models\M_Divisi();
         $this->posisiModel = new \App\Models\M_Posisi();
+        $this->employeeModel = new \App\Models\M_Employee();
     }
     public function index()
     {
@@ -80,5 +81,72 @@ class User extends BaseController
     {
         $this->userModel->deleteUser($id);
         return redirect('admin/index');
+    }
+
+    public function data_profile()
+    {
+        $data['title'] = 'Add Data';
+
+        $divisi = $this->divisiModel->list();
+        $data['divisi'] = $divisi;
+
+        $posisi = $this->posisiModel->list();
+        $data['posisi'] = $posisi;
+
+        helper('form');
+
+        if (!$this->request->is('post')) {
+            return view('user/edit', $data);
+        }
+
+        $post = $this->request->getPost([
+            'id_employee',
+            'name',
+            'email',
+            'birth_place',
+            'birth_date',
+            'no_tlp',
+            'address',
+            'gender',
+            'religion',
+            'degree',
+            'divisi',
+            'position'
+        ]);
+
+        if (!$this->validateData($post, [
+            'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'name'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'email'         => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'birth_place'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'birth_date'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'no_tlp'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'address'       => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'gender'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'religion'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'degree'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'divisi'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'position'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+
+        $dataEmployee = [
+            'id_employee'   => $post['id_employee'],
+            'name'          => $post['name'],
+            'email'         => $post['email'],
+            'birth_place'   => $post['birth_place'],
+            'birth_date'    => $post['birth_date'],
+            'no_tlp'        => $post['no_tlp'],
+            'address'       => $post['address'],
+            'gender'        => $post['gender'],
+            'religion'      => $post['religion'],
+            'degree'        => $post['degree'],
+            'divisi'        => $post['divisi'],
+            'position'      => $post['position'],
+        ];
+        $this->employeeModel->insert_employee($dataEmployee);
+        return redirect('user/index')->with('success', 'Data Added Successfully');
     }
 }

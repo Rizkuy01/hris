@@ -45,6 +45,11 @@
             </div>
         </div>
 
+        <div id="chart-container"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+        <script src="script.js"></script>
+
     </div>
 
 </div>

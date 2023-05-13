@@ -39,6 +39,10 @@ $routes->get(
     '/dashboard',
     'Dashboard::index'
 );
+$routes->get(
+    '/dashboard/index',
+    'Dashboard::index'
+);
 
 $routes->add(
     '/admin',
@@ -172,7 +176,7 @@ $routes->get(
 );
 $routes->get(
     '/user/edit',
-    'User::data_user'
+    'User::data_profile'
 );
 
 
