@@ -147,7 +147,6 @@ $routes->get(
 $routes->get(
     '/admin/add_employee',
     'Employee::add_employee',
-    ['filter' => 'role:Admin']
 );
 $routes->get(
     'Employee/delete/(:num)',
@@ -198,7 +197,6 @@ $routes->post(
 $routes->post(
     '/employee/add_employee',
     'Employee::add_employee',
-    ['filter' => 'role:Admin']
 );
 $routes->post(
     '/user/add_user',

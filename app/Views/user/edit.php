@@ -27,7 +27,7 @@
                     <input type="text" class="form-control" id="name" name="name" placeholder="Add employee name" value="<?= set_value('name') ?>" autocomplite="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Add email" value="<?= set_value('email') ?>" autocomplite="off">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Add email" value="<?= user()->email ?>" autocomplite="off">
                 </div>
 
                 <div class="form-group row">

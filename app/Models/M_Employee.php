@@ -13,6 +13,7 @@ class M_Employee extends Model
         'id_employee',
         'name',
         'email',
+        'start_working',
         'birth_place',
         'birth_date',
         'no_tlp',
@@ -22,6 +23,8 @@ class M_Employee extends Model
         'degree',
         'divisi',
         'position',
+        'mirage',
+        'tanggungan',
     ];
 
     public function list()
@@ -35,6 +38,7 @@ class M_Employee extends Model
         img, 
         name, 
         email, 
+        start_working,
         birth_place, 
         birth_date, 
         no_tlp, 
@@ -43,7 +47,9 @@ class M_Employee extends Model
         religion, 
         degree, 
         divisi, 
-        position'
+        position,
+        mirage,
+        tanggungan'
         );
         $query = $this->builder->get();
 
@@ -87,6 +93,7 @@ class M_Employee extends Model
             'id_employee'   => $this->request->getPost(['id_employee']),
             'name'          => $this->request->getPost(['name']),
             'email'         => $this->request->getPost(['email']),
+            'start_working'  => $this->request->getPost(['start_working']),
             'birth_place'   => $this->request->getPost(['birth_place']),
             'birth_date'    => $this->request->getPost(['birth_date']),
             'no_tlp'        => $this->request->getPost(['no_tlp']),
@@ -96,6 +103,8 @@ class M_Employee extends Model
             'degree'        => $this->request->getPost(['degree']),
             'divisi'        => $this->request->getPost(['divisi']),
             'position'      => $this->request->getPost(['position']),
+            'mirage'        => $this->request->getPost(['mirage']),
+            'tanggungan'    => $this->request->getPost(['tanggungan']),
         ];
         $this->builder->where('id', $this->request->getPost('id', $id));
         $this->builder->update(['employee', $data]);

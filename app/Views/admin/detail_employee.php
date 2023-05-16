@@ -9,9 +9,13 @@
         <div class="col-lg-8">
 
             <!-- Button trigger modal -->
-            <div class="mb-3">
-                <a href="<?= base_url('admin/employee'); ?>" type="button" class="btn btn-secondary">Go back</a>
-                <a href="<?= base_url('Employee/edit_employee/' . $user->employeeid); ?>" type="button" class="btn btn-warning">Edit</a>
+            <div class="mb-3 row">
+                <a href="<?= base_url('admin/employee'); ?>" type="button" class="btn btn-secondary ml-3">Go back</a>
+                <a href="<?= base_url('Employee/edit_employee/' . $user->employeeid); ?>" type="button" class="btn btn-warning ml-3">Edit</a>
+                <div class="custom-control custom-switch ml-4 mt-2">
+                    <input type="checkbox" class="custom-control-input" id="isactive" checked>
+                    <label class="custom-control-label" for="isactive">Active</label>
+                </div>
             </div>
 
             <div class="card mb-3" style="max-width: 1200px;">
@@ -38,6 +42,11 @@
                             <label class="small">email</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email" name="email" placeholder="<?= $user->email; ?>" disabled>
+                            </div>
+
+                            <label class="small">start work</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="start_working" name="start_working" placeholder="<?= $user->start_working; ?>" disabled>
                             </div>
 
                             <label class="small">birth</label>
@@ -78,6 +87,16 @@
                             <label class="small">position</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="position" name="position" placeholder="<?= $user->position ?>" disabled>
+                            </div>
+
+                            <label class="small">status</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="mirage" name="mirage" placeholder="<?= $user->mirage ?>" disabled>
+                            </div>
+
+                            <label class="small">tanggungan</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="tanggungan" name="tanggungan" placeholder="<?= $user->tanggungan ?>" disabled>
                             </div>
 
                             <li class="list-group-item">

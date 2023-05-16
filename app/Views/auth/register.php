@@ -30,41 +30,10 @@
                                     </div>
 
                                     <!-- divisi -->
-                                    <div class="form-group">
-                                        <select name="Divisi" id="Divisi" class="form-control" value="<?= set_value('divisi') ?>" placeholder="divisi">
-                                            <option value="">Divisi</option>
-                                            <option value="">Graha</option>
-                                            <option value="">Cipta Digital</option>
-                                            <option value="">Cipta Office Galuh</option>
-                                            <option value="">Butik Undangan Cianjur</option>
-                                            <option value="">Cipta Purwakarta</option>
-                                            <option value="">Cipta Online</option>
-                                            <option value="">Corporate</option>
-                                        </select>
-                                    </div>
+                                    <!--  -->
 
                                     <!-- Posisi -->
-                                    <div class="form-group">
-                                        <select name="position" id="position" class="form-control" value="<?= set_value('position') ?>">
-                                            <option value="">Position</option>
-                                            <option value="">HR</option>
-                                            <option value="">IT</option>
-                                            <option value="">Marketing</option>
-                                            <option value="">Accounting</option>
-                                            <option value="">Koki</option>
-                                            <option value="">Admin</option>
-                                            <option value="">Customer Service</option>
-                                            <option value="">Operator Setting</option>
-                                            <option value="">Operator Finishing</option>
-                                            <option value="">Operator Gudang</option>
-                                            <option value="">Operator Offset</option>
-                                            <option value="">Operator A3</option>
-                                            <option value="">Operator Large Format</option>
-                                            <option value="">Account Manager</option>
-                                            <option value="">Delivery</option>
-                                            <option value="">Outsourcing</option>
-                                        </select>
-                                    </div>
+                                    <!--  -->
 
 
                                     <!-- password -->

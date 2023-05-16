@@ -36,6 +36,7 @@ class Employee extends BaseController
         img, 
         email, 
         name, 
+        start_working, 
         position, 
         degree, 
         address, 
@@ -44,7 +45,9 @@ class Employee extends BaseController
         birth_place, 
         gender, 
         religion, 
-        divisi
+        divisi,
+        mirage,
+        tanggungan
         ');
         $this->builder->where('employee.id', $id);
         $query = $this->builder->get();
@@ -78,6 +81,7 @@ class Employee extends BaseController
             'id_employee',
             'name',
             'email',
+            'start_working',
             'birth_place',
             'birth_date',
             'no_tlp',
@@ -86,13 +90,16 @@ class Employee extends BaseController
             'religion',
             'degree',
             'divisi',
-            'position'
+            'position',
+            'mirage',
+            'tanggungan',
         ]);
 
         if (!$this->validateData($post, [
             'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'name'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'email'         => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'start_working' => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'birth_place'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'birth_date'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'no_tlp'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
@@ -102,6 +109,7 @@ class Employee extends BaseController
             'degree'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'divisi'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'position'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'mirage'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
@@ -111,6 +119,7 @@ class Employee extends BaseController
             'id_employee'   => $post['id_employee'],
             'name'          => $post['name'],
             'email'         => $post['email'],
+            'start_working' => $post['start_working'],
             'birth_place'   => $post['birth_place'],
             'birth_date'    => $post['birth_date'],
             'no_tlp'        => $post['no_tlp'],
@@ -120,6 +129,8 @@ class Employee extends BaseController
             'degree'        => $post['degree'],
             'divisi'        => $post['divisi'],
             'position'      => $post['position'],
+            'mirage'        => $post['mirage'],
+            'tanggungan'    => $post['tanggungan'],
         ];
         $this->employeeModel->insert_employee($dataEmployee);
         return redirect('dashboard/index')->with('success', 'Data Added Successfully');
@@ -154,6 +165,7 @@ class Employee extends BaseController
             'id_employee'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'name'          => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'email'         => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'start_working' => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'birth_place'   => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'birth_date'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'no_tlp'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
@@ -163,6 +175,7 @@ class Employee extends BaseController
             'degree'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'divisi'        => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'position'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            'mirage'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ]);
 
         if (!$validation) {
@@ -178,6 +191,7 @@ class Employee extends BaseController
                 'id_employee'   => $this->request->getPost(['id_employee']),
                 'name'          => $this->request->getPost(['name']),
                 'email'         => $this->request->getPost(['email']),
+                'start_working' => $this->request->getPost(['start_working']),
                 'birth_place'   => $this->request->getPost(['birth_place']),
                 'birth_date'    => $this->request->getPost(['birth_date']),
                 'no_tlp'        => $this->request->getPost(['no_tlp']),
@@ -187,6 +201,8 @@ class Employee extends BaseController
                 'degree'        => $this->request->getPost(['degree']),
                 'divisi'        => $this->request->getPost(['divisi']),
                 'position'      => $this->request->getPost(['position']),
+                'mirage'        => $this->request->getPost(['mirage']),
+                'tanggungan'    => $this->request->getPost(['mirage']),
             ]);
             return redirect()->to(base_url('admin/detail_employee'));
         }

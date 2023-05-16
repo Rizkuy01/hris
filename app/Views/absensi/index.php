@@ -58,15 +58,15 @@
                 </div>
 
                 <!-- open camera -->
-                <label for="foto">Foto Absensi:</label>
-                <div class="form-group">
-                    <input type="file" id="foto" name="foto" accept="image/*" capture="camera" class="form-control">
-                    <button type="button" class="btn btn-primary mt-3" onclick="openCamera()">Ambil Foto</button>
-                </div>
+                <!-- <div class="custom-file">
+                    <label for=" foto" class="custom-file-label">File foto</label>
+                    <input type="file" id="foto" name="foto" accept="image/*" capture="camera" class="custom-file-input">
+                </div> -->
+                <button type="button" class="btn btn-primary mb-3" onclick="openCamera()">Ambil Foto</button>
 
                 <!-- memvisualisasikan lokasi -->
-                <label for="lokasi" id="lokasi">Maps : </label>
                 <div id="map-box" style="display:none">
+                    <label for="lokasi" id="lokasi">Maps : </label>
                     <div id="map" style="height: 400px;"></div>
                 </div>
 
@@ -134,6 +134,18 @@
         locationInput.readOnly = false;
         locationInput.style.display = "block";
         mapElement.style.display = "block";
+
+        // Mendapatkan file yang diunggah saat tombol submit ditekan
+        var submitButton = document.querySelector("button[type='submit']");
+        submitButton.addEventListener("click", function() {
+            var file = fileInput.files[0];
+
+            // Lakukan sesuatu dengan file yang diunggah, misalnya mengirim ke server
+            // Anda dapat mengakses file melalui objek 'file' di sini
+            console.log("Nama file:", file.name);
+            console.log("Tipe file:", file.type);
+            console.log("Ukuran file:", file.size);
+        });
     }
 
     // Fungsi untuk menampilkan peta pada halaman dan menandai lokasi pengguna
@@ -179,7 +191,7 @@
                         context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
                         var fotoInput = document.getElementById('foto');
-                        var foto = canvas.toDataURL('image/jpeg', 0.5);
+                        var foto = canvas.toDataURL('image/jpeg', 5.0);
                         fotoInput.value = foto;
 
                         video.srcObject = null;

@@ -36,7 +36,7 @@ class Absensi extends BaseController
             'position'  => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'divisi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'lokasi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            'foto'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
+            // 'foto'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             // 'waktu'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
