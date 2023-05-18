@@ -37,7 +37,6 @@ class Absensi extends BaseController
             'divisi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             'lokasi'    => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
             // 'foto'      => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
-            // 'waktu'     => ['rules' => 'required', 'errors' => ['required' => '{field} harus diisi']],
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
@@ -48,8 +47,7 @@ class Absensi extends BaseController
             'position'  => $post['position'],
             'divisi'    => $post['divisi'],
             'lokasi'    => $post['lokasi'],
-            'foto'    => $post['foto'],
-            // 'waktu'     => $post['waktu'],
+            // 'foto'    => $post['foto'],
         ];
         $this->kehadiranModel->insert_absen($dataAbsen);
         return redirect('absensi/rekap')->with('success', 'Data Added Successfully');

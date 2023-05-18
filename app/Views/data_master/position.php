@@ -9,13 +9,13 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-4">
             <!-- Button trigger modal -->
             <div class="mb-3">
                 <a href="/data_master/add_position" type="button" class="btn btn-primary">Add New Position</a>
             </div>
 
-            <table class="table table-striped table-bordered dt-responsive nowrap" id="table-position" width="100%" cellspacing="0">
+            <table class="table table-striped table-bordered table-sm dt-responsive nowrap" id="table-position" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

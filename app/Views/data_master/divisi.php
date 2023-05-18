@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-4">
 
-            <table class="table table-striped table-bordered dt-responsive nowrap" id="table-divisi" width="100%" cellspacing="0">
+            <table class="table table-striped table-bordered table-sm dt-responsive nowrap" id="table-divisi" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
