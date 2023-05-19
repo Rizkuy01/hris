@@ -50,31 +50,6 @@
     $('#table-rekap').DataTable();
 </script>
 
-<script>
-    // Fungsi untuk mereset tabel
-    function resetTabel() {
-        var table = $('#table-rekap').DataTable();
-        table.clear().destroy(); // Menghapus dan menghancurkan DataTable
-        table = $('#table-rekap').DataTable(); // Menginisialisasi kembali DataTable
-    }
-
-    // Fungsi untuk memperbarui tabel pada pukul 00:00
-    function updateTabelPukul() {
-        var now = new Date();
-        var millisTillUpdate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0) - now;
-        setTimeout(function() {
-            resetTabel();
-            setInterval(resetTabel, 24 * 60 * 60 * 1000); // Mengatur reset tabel setiap 24 jam
-        }, millisTillUpdate);
-    }
-
-    $(document).ready(function() {
-        $('#table-rekap').DataTable();
-
-        // Memanggil fungsi untuk memperbarui tabel pada pukul 00:00
-        updateTabelPukul();
-    });
-</script>
 
 
 

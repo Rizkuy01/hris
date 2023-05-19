@@ -87,20 +87,21 @@
     }
 
     function showPosition(position) {
-        document.getElementById("latitude").value = position.coords.latitude;
-        document.getElementById("longitude").value = position.coords.longitude;
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
 
-        // Membuat URL Google Maps dari latitude dan longitude
-        var mapUrl = "https://www.google.com/maps/search/?api=1&query=" + position.coords.latitude + "," + position.coords.longitude;
+        document.getElementById("latitude").value = latitude;
+        document.getElementById("longitude").value = longitude;
 
-        // Menampilkan hasil lokasi pada label
+        var mapUrl = "https://www.google.com/maps/search/?api=1&query=" + latitude + "," + longitude;
+
         var lokasiLabel = document.getElementById("lokasi-label");
-        lokasiLabel.innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude + " (<a href='" + mapUrl + "' target='_blank'>Lihat di Google Maps</a>)";
+        lokasiLabel.innerHTML = "Latitude: " + latitude + ", Longitude: " + longitude + " (<a href='" + mapUrl + "' target='_blank'>Lihat di Google Maps</a>)";
 
-        // Mengisi nilai form dengan link Google Maps
         var lokasiForm = document.getElementById("lokasi");
         lokasiForm.value = mapUrl;
     }
+
 
 
     // Menampilkan peta pada halaman
@@ -154,7 +155,7 @@
     // Mendapatkan lokasi pengguna dan menampilkan peta
     function getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.watchPosition(function(position) {
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
                 tampilkanMap(latitude, longitude);
@@ -163,6 +164,7 @@
             alert("Geolocation tidak didukung oleh browser Anda.");
         }
     }
+
 
     // Akses kamera
     function openCamera() {
