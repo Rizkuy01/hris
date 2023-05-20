@@ -1,0 +1,10 @@
+AKUN HRIS CIPTA GRAFIKA
+
+username: Administrator
+password: cipta123
+
+username: HRD
+password: humanresource
+
+username: guest user
+password: vardhamma

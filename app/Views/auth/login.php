@@ -68,11 +68,11 @@
                                     </div>
                                 <?php endif; ?>
 
-                                <?php if ($config->allowRegistration) : ?>
+                                <!-- <?php if ($config->allowRegistration) : ?>
                                     <div class="text-center">
                                         <a class="small" href="<?= url_to('register') ?>"><?= lang('Auth.needAnAccount') ?></a>
                                     </div>
-                                <?php endif; ?>
+                                <?php endif; ?> -->
 
                             </div>
                         </div>
